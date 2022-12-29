@@ -2,26 +2,26 @@ import Link from 'next/link';
 
 import { Background } from '../background/Background';
 import { Button } from '../button/Button';
-import { HeroOneButton } from '../hero/HeroOneButton';
+import { HeroContent } from '../hero/HeroContent';
 import { Section } from '../layout/Section';
-import { NavbarTwoColumns } from '../navigation/NavbarTwoColumns';
+import { NavbarItems } from '../navigation/NavbarItems';
 import { Logo } from './Logo';
 
 const Hero = () => (
 	<Background color="bg-gray-100">
 		<Section yPadding="py-6">
-			<NavbarTwoColumns logo={<Logo xl />}>
-				<li>
+			<NavbarItems logo={<Logo xl />}>
+				{/* <li>
 					<Link href="/">Influencer?</Link>
 				</li>
 				<li>
 					<Link href="/">Client?</Link>
-				</li>
-			</NavbarTwoColumns>
+				</li> */}
+			</NavbarItems>
 		</Section>
 
 		<Section yPadding="pt-20 pb-32">
-			<HeroOneButton
+			<HeroContent
 				title={
 					<>
 						{'The modern solutions for\n'}
@@ -31,10 +31,15 @@ const Hero = () => (
 					</>
 				}
 				description="The easiest way to grow your business."
-				button={
-					<Link href="">
-						<Button xl>Sign up for demo</Button>
-					</Link>
+				buttons={
+					<>
+						<Link href="/brands">
+							<Button xl>I&apos;m a brand</Button>
+						</Link>
+						<Link href="/creators">
+							<Button xl>I&apos;m a creator</Button>
+						</Link>
+					</>
 				}
 			/>
 		</Section>
