@@ -12,14 +12,10 @@ const Hero = () => (
 		<Section yPadding="py-6">
 			<NavbarTwoColumns logo={<Logo xl />}>
 				<li>
-					<Link href="/">
-						<a>Influencer?</a>
-					</Link>
+					<Link href="/">Influencer?</Link>
 				</li>
 				<li>
-					<Link href="/">
-						<a>Client?</a>
-					</Link>
+					<Link href="/">Client?</Link>
 				</li>
 			</NavbarTwoColumns>
 		</Section>
@@ -37,9 +33,7 @@ const Hero = () => (
 				description="The easiest way to grow your business."
 				button={
 					<Link href="">
-						<a>
-							<Button xl>Sign up for demo</Button>
-						</a>
+						<Button xl>Sign up for demo</Button>
 					</Link>
 				}
 			/>

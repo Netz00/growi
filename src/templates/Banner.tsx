@@ -11,9 +11,7 @@ const Banner = () => (
 			subtitle="We are always seeking for experts open open for interview."
 			button={
 				<Link href="/">
-					<a>
-						<Button>Get Started</Button>
-					</a>
+					<Button>Get Started</Button>
 				</Link>
 			}
 		/>
