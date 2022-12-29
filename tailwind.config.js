@@ -17,14 +17,14 @@ module.exports = {
 			colors: {
 				primary: {
 					100: '#E6F6FE',
-					200: '#C0EAFC',
-					300: '#9ADDFB',
-					400: '#4FC3F7',
-					500: '#03A9F4',
-					600: '#0398DC',
-					700: '#026592',
-					800: '#014C6E',
-					900: '#013349',
+					200: '#D9EDDF',
+					300: '#CDFBE4',
+					400: '#31C48D',
+					500: '#00AC95',
+					600: '#009293',
+					700: '#007988',
+					800: '#206073',
+					900: '#2F4858',
 				},
 				gray: {
 					100: '#f7fafc',
@@ -40,6 +40,9 @@ module.exports = {
 			},
 			lineHeight: {
 				hero: '4.5rem',
+			},
+			fontFamily: {
+				bellota: ['Bellota', 'sans-cursive'],
 			},
 		},
 	},
