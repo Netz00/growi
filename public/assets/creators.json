@@ -1,0 +1,58 @@
+{
+	"hero": {
+		"navBarLinks": [
+			{ "key": 0, "text": "Home", "link": "/creators" },
+			{ "key": 1, "text": "Blog", "link": "/blog" },
+			{ "key": 2, "text": "About Us", "link": "/about" },
+			{ "key": 3, "text": "Sign Up", "link": "/signup" },
+			{ "key": 4, "text": "Log In", "link": "/login" }
+		],
+		"title": {
+			"part1": "Monetize your influence with\n",
+			"part2": "Influencer marketing"
+		},
+		"description": "The best place to connect with brands and monetize your influence.",
+		"buttons": [{ "key": 0, "text": "Join now!", "link": "/creators/join" }]
+	},
+	"sections": [
+		{
+			"key": 0,
+			"title": "Growi",
+			"description": "The best place to learn about your audience, connect with brands and monetize your influence.",
+			"features": [
+				{
+					"key": 0,
+					"title": "Get a professional media kit for free",
+					"description": "Host your stats, rate card and best work on a public URL. Share the link with brands you want to collaborate with.",
+					"image": "/assets/images/mediaKit.jpg",
+					"imageAlt": "First feature alt text",
+					"reverse": false
+				},
+				{
+					"key": 1,
+					"title": "Insights into your influence",
+					"description": "See all the metrics from your channels in one place. Track growth, engagement and performance of your content and use these insights to learn and grow.",
+					"image": "/assets/images/InfluencerProfile.png",
+					"imageAlt": "Second feature alt text",
+					"reverse": true
+				},
+				{
+					"key": 2,
+					"title": "Get paid on time",
+					"description": "We make sure you get paid and that it’s on time.",
+					"image": "/assets/images/earningPerInfluencer.png",
+					"imageAlt": "Third feature alt text",
+					"reverse": false
+				}
+			]
+		}
+	],
+	"banner": {
+		"title": "Want to help?",
+		"subtitle": "We are always seeking for experts open open for interview.",
+		"button": {
+			"text": "Get Started",
+			"link": "/"
+		}
+	}
+}
