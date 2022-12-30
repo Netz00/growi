@@ -1,20 +1,17 @@
-import Link from 'next/link';
+import { ReactNode } from 'react';
 
-import { Button } from '../button/Button';
 import { CTABanner } from '../cta/CTABanner';
 import { Section } from '../layout/Section';
 
-const Banner = () => (
+type IBannerProps = {
+	title: string;
+	subtitle: string;
+	button: ReactNode;
+};
+
+const Banner = (props: IBannerProps) => (
 	<Section>
-		<CTABanner
-			title="Want to help?"
-			subtitle="We are always seeking for experts open open for interview."
-			button={
-				<Link href="/">
-					<Button>Get Started</Button>
-				</Link>
-			}
-		/>
+		<CTABanner {...props} />
 	</Section>
 );
 

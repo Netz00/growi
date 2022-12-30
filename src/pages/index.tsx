@@ -1,5 +1,22 @@
-import { Base } from '../templates/Base';
+import fs from 'fs';
 
-const Index = () => <Base />;
+import Base from '../templates/Base';
+
+const Index = ({ content }: any) => <Base {...content} />;
+
+export async function getStaticProps() {
+	/**
+	 * TODO
+	 * replace with headless CMS
+	 */
+	const res = fs.readFileSync('public/assets/main.json');
+	const content = JSON.parse(res.toString());
+
+	return {
+		props: {
+			content,
+		},
+	};
+}
 
 export default Index;
