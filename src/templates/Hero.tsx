@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { Background } from '../background/Background';
 import { HeroContent } from '../hero/HeroContent';
 import { Section } from '../layout/Section';
-import { NavbarItems } from '../navigation/NavbarItems';
+import { CagaljsNavbarItems } from '../navigation/CagaljsNavbarItems';
 import { Logo } from './Logo';
 
 type IHeroProps = {
@@ -16,7 +16,9 @@ type IHeroProps = {
 const Hero = (props: IHeroProps) => (
 	<Background color="bg-gray-100">
 		<Section yPadding="py-6">
-			<NavbarItems logo={<Logo xl />}>{props.navBarItems}</NavbarItems>
+			<CagaljsNavbarItems logo={<Logo xl />}>
+				{props.navBarItems}
+			</CagaljsNavbarItems>
 		</Section>
 
 		<Section yPadding="pt-20 pb-32">
