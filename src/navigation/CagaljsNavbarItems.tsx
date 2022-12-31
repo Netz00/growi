@@ -2,8 +2,8 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import Link from 'next/link';
 
-import detectWrapItems from '../hooks/detectWrapItems';
 import useOutsideAlerter from '../hooks/useOutsideAlerter';
+import { detectWrapItems, getWrapItems } from '../hooks/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
 	logo: ReactNode;
@@ -18,30 +18,28 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 	useOutsideAlerter(() => !dropdown && setDropdown(false), wrapperRef);
 
 	useEffect(() => {
-		const fragment = detectWrapItems('navBar', 'li');
-
-		if (fragment.firstChild !== null) {
-			// Append fragment to desired element:
-			document.getElementById('dropdown')!.appendChild(fragment);
-
+		// are there any?
+		if (detectWrapItems('navBar', 'li')) {
+			// add navbar button
 			const button = document.getElementById('dropdownMenuButton');
-			if (button !== null) button.style.display = 'inline-flex';
+
+			if (button !== null) button.style.display = 'block';
+
+			// recalculate again because button was added
+			setTimeout(() => {
+				const fragment = getWrapItems('navBar', 'li');
+				// Append fragment to desired element:
+				document.getElementById('dropdown')!.appendChild(fragment);
+			}, 0);
+
+			// recalculate again because button was added
+			setTimeout(() => {
+				const fragment = getWrapItems('navBar', 'li');
+				// Append fragment to desired element:
+				document.getElementById('dropdown')!.appendChild(fragment);
+			}, 1);
 		}
 	}, []);
-
-	useEffect(() => {
-		const button = document.getElementById('dropdownMenuButton');
-		const dropDownBar = document.getElementById('dropdown');
-
-		if (
-			document.getElementById('dropdown')?.getElementsByTagName('li')
-				.length !== 0
-		) {
-			if (button !== null) button.style.display = 'inline-flex';
-			if (dropDownBar !== null)
-				dropDownBar.style.display = dropdown ? 'flex' : 'none';
-		}
-	}, [dropdown]);
 
 	return (
 		<>
@@ -88,7 +86,9 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 			<div className="ml-auto w-fit">
 				<ul
 					id="dropdown"
-					className="ml-auto w-fit flex flex-col items-end gap-3 font-medium text-xl text-gray-800"
+					className={`ml-auto w-fit ${
+						dropdown ? 'flex' : 'hidden'
+					} flex-col items-end gap-5 font-medium text-xl text-gray-800`}
 				></ul>
 			</div>
 		</>
