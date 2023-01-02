@@ -1,0 +1,46 @@
+{
+	"hero": {
+		"navBarLinks": [
+			{ "key": 0, "text": "Home", "link": "/brands" },
+			{ "key": 1, "text": "Search", "link": "/search" },
+			{ "key": 2, "text": "Blog", "link": "/blog" },
+			{ "key": 3, "text": "About Us", "link": "/about" },
+			{ "key": 4, "text": "Sign Up", "link": "/signup" },
+			{ "key": 5, "text": "Log In", "link": "/login" }
+		]
+	},
+	"banner": {
+		"title": "Want to help?",
+		"subtitle": "We are always seeking for experts open open for interview.",
+		"button": {
+			"text": "Get Started",
+			"link": "/"
+		}
+	},
+	"categories": [
+		{
+			"key": 0,
+			"name": "Sport",
+			"image": "/assets/images/categorySport.png",
+			"imageAlt": "Sport"
+		},
+		{
+			"key": 1,
+			"name": "Traveling",
+			"image": "/assets/images/categoryTraveling.png",
+			"imageAlt": "Traveling"
+		},
+		{
+			"key": 2,
+			"name": "Family",
+			"image": "/assets/images/categoryFamily.png",
+			"imageAlt": "Family"
+		},
+		{
+			"key": 3,
+			"name": "Fashion",
+			"image": "/assets/images/categoryFashion.png",
+			"imageAlt": "Fashion"
+		}
+	]
+}
