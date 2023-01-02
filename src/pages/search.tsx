@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { Background } from '../background/Background';
 import { Button } from '../button/Button';
+import { Category } from '../filters/Category';
 import { SearchBox } from '../input/SearchBox';
 import { Meta } from '../layout/Meta';
 import { Section } from '../layout/Section';
@@ -34,6 +35,17 @@ const Search = (props: ISearchProps) => (
 				<SearchBox />
 			</Section>
 		</Background>
+		<Section
+			description="Search by category"
+			yPadding="pt-6 pb-6"
+			textBottomMargin="mb-0"
+		>
+			<div className="flex flex-row gap-10 flex-nowrap justify-center overflow-auto whitespace-nowrap overflow-y-hidden pt-12">
+				{props.categories?.map((item: any) => (
+					<Category {...item} key={item.key} />
+				))}
+			</div>
+		</Section>
 
 		<Banner
 			{...props.banner}

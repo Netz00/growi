@@ -4,6 +4,7 @@ type ISectionProps = {
 	title?: string;
 	description?: string;
 	yPadding?: string;
+	textBottomMargin?: string;
 	children: ReactNode;
 };
 
@@ -14,7 +15,11 @@ const Section = (props: ISectionProps) => (
 		}`}
 	>
 		{(props.title || props.description) && (
-			<div className="mb-12 text-center">
+			<div
+				className={`${
+					props.textBottomMargin ? props.textBottomMargin : 'mb-12'
+				} text-center`}
+			>
 				{props.title && (
 					<h2 className="text-4xl text-gray-900 font-bold">
 						{props.title}
