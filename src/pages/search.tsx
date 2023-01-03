@@ -3,13 +3,12 @@ import fs from 'fs';
 import Link from 'next/link';
 
 import { Background } from '../background/Background';
-import { Button } from '../button/Button';
+import { InfluencerCard } from '../card/InfluencerCard';
 import { Category } from '../filters/Category';
 import { SearchBox } from '../input/SearchBox';
 import { Meta } from '../layout/Meta';
 import { Section } from '../layout/Section';
 import { CagaljsNavbarItems } from '../navigation/CagaljsNavbarItems';
-import { Banner } from '../templates/Banner';
 import { Footer } from '../templates/Footer';
 import { Logo } from '../templates/Logo';
 import { AppConfig } from '../utils/AppConfig';
@@ -46,15 +45,17 @@ const Search = (props: ISearchProps) => (
 				))}
 			</div>
 		</Section>
-
-		<Banner
-			{...props.banner}
-			button={
-				<Link href={props.banner?.button.link}>
-					<Button>{props.banner?.button.text}</Button>
-				</Link>
-			}
-		/>
+		<Section
+			description="Todays' best picks"
+			yPadding="pt-6 pb-6"
+			textBottomMargin="mb-10"
+		>
+			<div className="flex flex-row gap-10 flex-wrap justify-center">
+				{props.influencers?.map((item: any) => (
+					<InfluencerCard {...item} key={item.key} />
+				))}
+			</div>
+		</Section>
 		<Footer />
 	</div>
 );
