@@ -15,7 +15,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 
 	const [dropdown, setDropdown] = useState(false);
 
-	useOutsideAlerter(() => !dropdown && setDropdown(false), wrapperRef);
+	useOutsideAlerter(() => setDropdown(false), dropdown, wrapperRef);
 
 	useEffect(() => {
 		// are there any?

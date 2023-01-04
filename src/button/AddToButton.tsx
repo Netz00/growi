@@ -8,7 +8,7 @@ const AddToButton = (props: IAddToButtonProps) => (
                                     hover:text-primary-400 focus:ring-4 focus:outline-none focus:ring-primary-300 
                                    dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
                                    transition ease-in-out delay-150 hover:transition-transform hover:scale-125 hover:cursor-pointer"
-		onClick={() => props.onClick}
+		onClick={() => props.onClick()}
 	>
 		<svg
 			width="41"
