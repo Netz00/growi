@@ -1,6 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import useOutsideAlerter from '../../hooks/useOutsideAlerter';
+import { Clickable } from '../icons/Clickable';
+import { Exit } from '../icons/Exit';
+import { Plus } from '../icons/Plus';
 
 type ISaveCardPopupProps = {
 	id: string;
@@ -11,64 +14,96 @@ type ISaveCardPopupProps = {
 // TODO pressing + button while settingas are active, mousedown and onClick event conflict, select card div child elements and stop propagation for each
 
 const SaveCardPopup = (props: ISaveCardPopupProps) => {
-	const lists = ['Cosmetics', 'Sport', 'Nike'];
+	const [lists, setLists] = useState<string[]>(['Cosmetics', 'Sport', 'Nike']);
 
 	const settingsRef = useRef(null);
-	useOutsideAlerter(() => props.setSavePopup(false), props.savePopup, settingsRef);
+	const newListInput = useRef<HTMLInputElement>(null);
+
+	const [addNew, setAddNew] = useState(false);
+
+	const addList = () => {
+		if (newListInput?.current?.value !== '')
+			setLists([...lists, newListInput?.current?.value ?? '']);
+	};
+
+	useOutsideAlerter(
+		() => props.setSavePopup(false) || setAddNew(false),
+		props.savePopup,
+		settingsRef
+	);
+
 	return (
 		<div
 			ref={settingsRef}
 			className={`${
 				!props.savePopup && 'hidden'
 			} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                            h-fit w-fit bg-white z-10
+                            h-fit w-auto bg-white z-10
                             border-solid border border-black rounded-lg`}
 		>
 			<div className="flex flex-col gap-3 p-5">
 				<div className="flex flex-row justify-between align-middle">
-					<p>Save to ...</p>{' '}
-					<svg
-						viewBox="0 0 24 24"
-						preserveAspectRatio="xMidYMid meet"
-						focusable="false"
-						className="w-6 h-6"
+					<span className="h-fit">Save to ...</span>{' '}
+					<Clickable
+						onClick={() => {
+							if (props.savePopup) props.setSavePopup(false);
+						}}
 					>
-						<g>
-							<path d="M12.7,12l6.6,6.6l-0.7,0.7L12,12.7l-6.6,6.6l-0.7-0.7l6.6-6.6L4.6,5.4l0.7-0.7l6.6,6.6l6.6-6.6l0.7,0.7L12.7,12z"></path>
-						</g>
-					</svg>
+						<Exit />
+					</Clickable>
 				</div>
-				<div className="flex flex-col gap-5 my-2">
+				<div className="flex flex-col gap-3 my-2 overflow-y-auto max-h-40">
 					{lists.map((list, key) => (
-						<div key={key} className="flex items-center gap-6">
+						<div
+							key={key}
+							className="flex items-center py-2 gap-6 hover:cursor-pointer"
+						>
 							<input
 								id={`checkbox-${key}-${props.id}`}
 								type="checkbox"
 								value=""
-								className="w-5 h-5 accent-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-black dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+								className="w-5 h-5 hover:cursor-pointer accent-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-black dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
 							/>
 							<label
 								htmlFor={`checkbox-${key}-${props.id}`}
-								className="text-sm dark:text-gray-300 flex-grow"
+								className="text-sm hover:cursor-pointer dark:text-gray-300 flex-grow"
 							>
 								{list}
 							</label>
 						</div>
 					))}
 				</div>
-				<div className="flex flex-row justify-between align-middle gap-4">
-					<svg
-						viewBox="0 0 24 24"
-						preserveAspectRatio="xMidYMid meet"
-						focusable="false"
-						className="w-6 h-6"
-					>
-						<g>
-							<path d="M20,12h-8v8h-1v-8H3v-1h8V3h1v8h8V12z"></path>
-						</g>
-					</svg>
-					<p>Create new list</p>
-				</div>
+
+				{addNew && (
+					<div>
+						<label
+							htmlFor="first_name"
+							className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+						>
+							Name
+						</label>
+						<input
+							ref={newListInput}
+							type="text"
+							id="first_name"
+							className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							placeholder="John"
+							required
+						/>
+					</div>
+				)}
+				<Clickable
+					onClick={() => {
+						if (!addNew) setAddNew(true);
+						else addList();
+					}}
+				>
+					<div className="flex flex-row justify-center align-middle gap-4">
+						<Plus />
+
+						<p>{addNew ? 'Create' : 'Create new list'}</p>
+					</div>{' '}
+				</Clickable>
 			</div>
 		</div>
 	);

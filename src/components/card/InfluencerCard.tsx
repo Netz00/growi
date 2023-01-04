@@ -3,7 +3,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { AddToButton } from '../button/AddToButton';
+import { Add } from '../icons/Add';
+import { Clickable } from '../icons/Clickable';
 import { CardCarousel, IMediaProps } from './CardCarousel';
 import { ILocationProps, Location } from './Location';
 import { ProfileStats } from './ProfileStats';
@@ -73,19 +74,21 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 					</h5>
 					<Rating {...props} />
 				</div>
-				<div className="px-5 pb-5 border-solid border-t border-black">
-					<div className="flex items-center justify-between">
-						<span className="text-3xl font-bold text-gray-900 dark:text-white">
-							{`$${(
-								Math.round(props.startingPrice * 100) / 100
-							).toFixed(2)}`}
-						</span>
-						<AddToButton
-							onClick={() => {
-								if (!savePopup) setSavePopup(true);
-							}}
-						/>
-					</div>
+				<div className="px-5 pt-2 pb-3 border-solid border-t border-black flex items-center justify-between">
+					<span className="text-3xl font-bold text-gray-900 dark:text-white">
+						{`$${(Math.round(props.startingPrice * 100) / 100).toFixed(
+							2
+						)}`}
+					</span>
+					<Clickable
+						onClick={() => {
+							if (!savePopup) setSavePopup(true);
+						}}
+						scale
+						hover
+					>
+						<Add />
+					</Clickable>
 				</div>
 			</div>
 			<SaveCardPopup
