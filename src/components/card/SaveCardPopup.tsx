@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import useOutsideAlerter from '../hooks/useOutsideAlerter';
+import useOutsideAlerter from '../../hooks/useOutsideAlerter';
 
 type ISaveCardPopupProps = {
 	id: string;

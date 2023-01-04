@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { Button } from '../button/Button';
-import { Meta } from '../layout/Meta';
+import { Button } from '../components/button/Button';
+import { Meta } from '../components/layout/Meta';
 import { AppConfig } from '../utils/AppConfig';
 import { Banner } from './Banner';
 import { Footer } from './Footer';

@@ -2,13 +2,13 @@ import fs from 'fs';
 
 import Link from 'next/link';
 
-import { Background } from '../background/Background';
-import { InfluencerCard } from '../card/InfluencerCard';
-import { Category } from '../filters/Category';
-import { SearchBox } from '../input/SearchBox';
-import { Meta } from '../layout/Meta';
-import { Section } from '../layout/Section';
-import { CagaljsNavbarItems } from '../navigation/CagaljsNavbarItems';
+import { Background } from '../components/background/Background';
+import { InfluencerCard } from '../components/card/InfluencerCard';
+import { Category } from '../components/filters/Category';
+import { SearchBox } from '../components/input/SearchBox';
+import { Meta } from '../components/layout/Meta';
+import { Section } from '../components/layout/Section';
+import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
 import { Footer } from '../templates/Footer';
 import { Logo } from '../templates/Logo';
 import { AppConfig } from '../utils/AppConfig';

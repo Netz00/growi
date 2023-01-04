@@ -2,8 +2,8 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import Link from 'next/link';
 
-import useOutsideAlerter from '../hooks/useOutsideAlerter';
-import { detectWrapItems, getWrapItems } from '../hooks/wrapItems';
+import useOutsideAlerter from '../../hooks/useOutsideAlerter';
+import { detectWrapItems, getWrapItems } from '../../hooks/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
 	logo: ReactNode;

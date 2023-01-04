@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
-import { Background } from '../background/Background';
-import { HeroContent } from '../hero/HeroContent';
-import { Section } from '../layout/Section';
-import { CagaljsNavbarItems } from '../navigation/CagaljsNavbarItems';
+import { Background } from '../components/background/Background';
+import { HeroContent } from '../components/hero/HeroContent';
+import { Section } from '../components/layout/Section';
+import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
 import { Logo } from './Logo';
 
 type IHeroProps = {
