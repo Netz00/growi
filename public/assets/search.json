@@ -46,7 +46,7 @@
 	"influencers": [
 		{
 			"key": 0,
-			"username": "knolltroll",
+			"username": "knolltroll1",
 			"firstName": "Mirjana",
 			"lastName": "Tailwind",
 			"profileImage": "/assets/images/profile1ProfileImage.png",
@@ -81,7 +81,7 @@
 		},
 		{
 			"key": 1,
-			"username": "knolltroll",
+			"username": "knolltroll2",
 			"firstName": "Mirjana",
 			"lastName": "Tailwind",
 			"profileImage": "/assets/images/profile1ProfileImage.png",
@@ -116,7 +116,7 @@
 		},
 		{
 			"key": 2,
-			"username": "knolltroll",
+			"username": "knolltroll3",
 			"firstName": "Mirjana",
 			"lastName": "Tailwind",
 			"profileImage": "/assets/images/profile1ProfileImage.png",
@@ -151,7 +151,7 @@
 		},
 		{
 			"key": 3,
-			"username": "knolltroll",
+			"username": "knolltroll4",
 			"firstName": "Mirjana",
 			"lastName": "Tailwind",
 			"profileImage": "/assets/images/profile1ProfileImage.png",
