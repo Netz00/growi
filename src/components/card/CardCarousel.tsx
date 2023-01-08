@@ -59,7 +59,7 @@ const CardCarousel = (props: ICardCarouselProps) => {
 									playing={activeMedia === index}
 									width="100%"
 									height="100%"
-									url="http://localhost:3000/assets/videous/profile1Media3.mp4"
+									url={`../${element.url}`}
 									config={{
 										file: {
 											attributes: {
