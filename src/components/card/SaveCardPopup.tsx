@@ -45,17 +45,17 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 						<Exit />
 					</Clickable>
 				</div>
-				<div className="flex flex-col gap-3 my-2 overflow-y-auto max-h-40">
+				<div className="flex flex-col gap-3 my-2 overflow-y-auto bg-scroll max-h-40">
 					{lists.map((list, key) => (
 						<div
 							key={key}
-							className="flex items-center py-2 gap-6 hover:cursor-pointer"
+							className="flex items-center py-2 gap-8 hover:cursor-pointer"
 						>
 							<input
 								id={`checkbox-${key}-${props.id}`}
 								type="checkbox"
 								value=""
-								className="w-5 h-5 hover:cursor-pointer accent-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-black focus:ring-2"
+								className="w-5 h-5 hover:cursor-pointer accent-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-black focus:ring-1"
 							/>
 							<label
 								htmlFor={`checkbox-${key}-${props.id}`}
@@ -80,7 +80,7 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 							type="text"
 							id="first_name"
 							className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-							placeholder="John"
+							placeholder="Enter list name"
 							required
 						/>
 					</div>
