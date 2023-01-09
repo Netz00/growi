@@ -1,8 +1,7 @@
-import { useState } from 'react';
-
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import useComponentVisible from '../../hooks/useComponentVisible';
 import { Add } from '../icons/Add';
 import { Clickable } from '../icons/Clickable';
 import { CardCarousel, IMediaProps } from './CardCarousel';
@@ -27,18 +26,22 @@ type IInfluencerCardProps = {
 	startingPrice: number;
 };
 
-// TODO pressing + button while settingas are active, mousedown and onClick event conflict, select card div child elements and stop propagation for each
-
 const InfluencerCard = (props: IInfluencerCardProps) => {
 	const router = useRouter();
-	const [savePopup, setSavePopup] = useState(false);
+
+	const {
+		ref,
+		refButton,
+		isComponentVisible: isSavePopupVisible,
+		setIsComponentVisible: setSavePopup,
+	} = useComponentVisible(false);
 
 	return (
 		<div className="relative">
 			<div
 				className={`${
-					savePopup && 'brightness-50'
-				} w-96 max-md:w-72 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex flex-col gap-4`}
+					isSavePopupVisible && 'brightness-50'
+				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col gap-4`}
 			>
 				<CardCarousel media={[...props.media]} />
 				<div className="flex flex-col gap-2 px-8">
@@ -69,33 +72,36 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 						<ProfileStats {...props} />
 					</div>
 
-					<h5 className="text-base font-semibold tracking-tight text-gray-900 dark:text-white">
+					<h5 className="text-base font-semibold tracking-tight text-gray-900">
 						{props.tags.map((tag) => `#${tag} `)}
 					</h5>
 					<Rating {...props} />
 				</div>
 				<div className="px-5 pt-2 pb-3 border-solid border-t border-black flex items-center justify-between">
-					<span className="text-3xl font-bold text-gray-900 dark:text-white">
+					<span className="text-3xl font-bold text-gray-900">
 						{`$${(Math.round(props.startingPrice * 100) / 100).toFixed(
 							2
 						)}`}
 					</span>
-					<Clickable
-						onClick={() => {
-							if (!savePopup) setSavePopup(true);
-						}}
-						scale
-						hover
-					>
-						<Add />
-					</Clickable>
+
+					<div ref={refButton}>
+						<Clickable
+							onClick={() => setSavePopup(!isSavePopupVisible)}
+							scale
+							hover
+						>
+							<Add />
+						</Clickable>
+					</div>
 				</div>
 			</div>
-			<SaveCardPopup
-				id={props.username}
-				savePopup={savePopup}
-				setSavePopup={setSavePopup}
-			/>
+			<div ref={ref}>
+				<SaveCardPopup
+					id={props.username}
+					savePopup={isSavePopupVisible}
+					setSavePopup={setSavePopup}
+				/>
+			</div>
 		</div>
 	);
 };

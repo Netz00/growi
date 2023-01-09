@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import useOutsideAlerter from '../../hooks/useOutsideAlerter';
 import { Clickable } from '../icons/Clickable';
 import { Exit } from '../icons/Exit';
 import { Plus } from '../icons/Plus';
@@ -11,12 +10,9 @@ type ISaveCardPopupProps = {
 	setSavePopup: Function;
 };
 
-// TODO pressing + button while settingas are active, mousedown and onClick event conflict, select card div child elements and stop propagation for each
-
 const SaveCardPopup = (props: ISaveCardPopupProps) => {
 	const [lists, setLists] = useState<string[]>(['Cosmetics', 'Sport', 'Nike']);
 
-	const settingsRef = useRef(null);
 	const newListInput = useRef<HTMLInputElement>(null);
 
 	const [addNew, setAddNew] = useState(false);
@@ -26,15 +22,12 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 			setLists([...lists, newListInput?.current?.value ?? '']);
 	};
 
-	useOutsideAlerter(
-		() => props.setSavePopup(false) || setAddNew(false),
-		props.savePopup,
-		settingsRef
-	);
+	useEffect(() => {
+		setAddNew(false);
+	}, [props.savePopup]);
 
 	return (
 		<div
-			ref={settingsRef}
 			className={`${
 				!props.savePopup && 'hidden'
 			} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
@@ -62,11 +55,11 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 								id={`checkbox-${key}-${props.id}`}
 								type="checkbox"
 								value=""
-								className="w-5 h-5 hover:cursor-pointer accent-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-black dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+								className="w-5 h-5 hover:cursor-pointer accent-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-black focus:ring-2"
 							/>
 							<label
 								htmlFor={`checkbox-${key}-${props.id}`}
-								className="text-sm hover:cursor-pointer dark:text-gray-300 flex-grow"
+								className="text-sm hover:cursor-pointer flex-grow"
 							>
 								{list}
 							</label>
@@ -78,7 +71,7 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 					<div>
 						<label
 							htmlFor="first_name"
-							className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+							className="block mb-2 text-sm font-medium text-gray-900"
 						>
 							Name
 						</label>
@@ -86,7 +79,7 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 							ref={newListInput}
 							type="text"
 							id="first_name"
-							className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+							className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 							placeholder="John"
 							required
 						/>

@@ -82,11 +82,10 @@ const CardCarousel = (props: ICardCarouselProps) => {
 						className={`w-3 h-3 rounded-full
                         ${
 							activeMedia === index ? 'bg-white' : 'bg-white/30'
-						}  dark:bg-gray-800/30
-                        hover:bg-white/50 dark:hover:bg-gray-800/60
-                        focus:ring-1 focus:ring-white dark:focus:ring-gray-800/70 focus:outline-none
+						}hover:bg-white/50
+                        focus:ring-1 focus:ring-white focus:outline-none
                         sm:w-4 sm:h-4 
-                        border-solid border-white dark:border-gray-800 border-2`}
+                        border-solid border-white border-2`}
 						aria-current={activeMedia === index ? 'true' : 'false'}
 						aria-label={`Slide ${index + 1}`}
 						data-carousel-slide-to={index}
@@ -103,10 +102,10 @@ const CardCarousel = (props: ICardCarouselProps) => {
 					data-carousel-prev
 					onClick={() => setActiveMedia(activeMedia - 1)}
 				>
-					<span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-2 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+					<span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-white group-focus:outline-none">
 						<svg
 							aria-hidden="true"
-							className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+							className="w-5 h-5 text-white sm:w-6 sm:h-6"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -130,10 +129,10 @@ const CardCarousel = (props: ICardCarouselProps) => {
 					data-carousel-next
 					onClick={() => setActiveMedia(activeMedia + 1)}
 				>
-					<span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-2 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+					<span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-white group-focus:outline-none">
 						<svg
 							aria-hidden="true"
-							className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+							className="w-5 h-5 text-white sm:w-6 sm:h-6"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"

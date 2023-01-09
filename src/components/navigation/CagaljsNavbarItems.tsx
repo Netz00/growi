@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect } from 'react';
 
 import Link from 'next/link';
 
-import useOutsideAlerter from '../../hooks/useOutsideAlerter';
+import useComponentVisible from '../../hooks/useComponentVisible';
 import { detectWrapItems, getWrapItems } from '../../hooks/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
@@ -11,11 +11,12 @@ type ICagaljsNavbarItemsProps = {
 };
 
 const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
-	const wrapperRef = useRef(null);
-
-	const [dropdown, setDropdown] = useState(false);
-
-	useOutsideAlerter(() => setDropdown(false), dropdown, wrapperRef);
+	const {
+		ref,
+		refButton,
+		isComponentVisible: isDropdownVisible,
+		setIsComponentVisible: setDropdown,
+	} = useComponentVisible(false);
 
 	useEffect(() => {
 		// are there any?
@@ -57,18 +58,18 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 						{props.children}
 					</ul>
 					<button
-						ref={wrapperRef}
+						ref={refButton}
 						id="dropdownMenuButton"
 						data-dropdown-toggle="dropdownDotsHorizontal"
 						className={`${
-							dropdown && 'rotate-90'
+							isDropdownVisible ? 'rotate-90' : 'rotate-0'
 						} h-fit hidden items-center 
                         p-2 text-sm font-medium text-center text-gray-900 rounded-lg 
-                        hover:bg-gray-100 focus:ring-4 dark:text-white 
-                        focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 
-                        dark:focus:ring-gray-600 hover:rotate-90 duration-200`}
+                        hover:bg-gray-100 focus:ring-4
+                        focus:ring-gray-50
+                        hover:rotate-90 duration-200`}
 						type="button"
-						onClick={() => setDropdown(!dropdown)}
+						onClick={() => setDropdown(!isDropdownVisible)}
 					>
 						<svg
 							className="w-6 h-6"
@@ -85,9 +86,10 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 
 			<div className="ml-auto w-fit">
 				<ul
+					ref={ref}
 					id="dropdown"
 					className={`ml-auto w-fit ${
-						dropdown ? 'flex' : 'hidden'
+						isDropdownVisible ? 'flex' : 'hidden'
 					} flex-col items-end gap-5 font-medium text-xl text-gray-800`}
 				></ul>
 			</div>
