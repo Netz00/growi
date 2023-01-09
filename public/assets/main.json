@@ -19,25 +19,25 @@
 			"features": [
 				{
 					"key": 0,
-					"title": "Get a professional media kit for free",
-					"description": "Host your stats, rate card and best work on a public URL. Share the link with brands you want to collaborate with.",
-					"image": "/assets/images/mediaKit.jpg",
+					"title": "End-to-End influencer marketing solution",
+					"description": "Growi provides plenty of features to to help brands and creators, such as creator search, chat, job contracts, live tracking of statistics, job validation...",
+					"image": "/assets/images/businessFlow.svg",
 					"imageAlt": "First feature alt text",
 					"reverse": false
 				},
 				{
 					"key": 1,
-					"title": "Insights into your influence",
-					"description": "See all the metrics from your channels in one place. Track growth, engagement and performance of your content and use these insights to learn and grow.",
-					"image": "/assets/images/InfluencerProfile.png",
+					"title": "We help brands",
+					"description": "Growi help brands to find ideal creator for their brand, makes sure the job gets done and provied plenty of data about creators.",
+					"image": "/assets/images/brands.png",
 					"imageAlt": "Second feature alt text",
 					"reverse": true
 				},
 				{
 					"key": 2,
-					"title": "Get paid on time",
-					"description": "We make sure you get paid and that it’s on time.",
-					"image": "/assets/images/earningPerInfluencer.png",
+					"title": "We help creators",
+					"description": "Growi help ensures that work is paid on time, brings the clients to creators and helps creatos to run a business.",
+					"image": "/assets/images/influencers.webp",
 					"imageAlt": "Third feature alt text",
 					"reverse": false
 				}
@@ -46,7 +46,7 @@
 	],
 	"banner": {
 		"title": "Want to help?",
-		"subtitle": "We are always seeking for experts open open for interview.",
+		"subtitle": "We are always seeking for experts open for interview.",
 		"button": {
 			"text": "Get Started",
 			"link": "/"
