@@ -1,6 +1,9 @@
 import className from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+
+import { Button } from '../button/Button';
 
 type IVerticalFeatureRowProps = {
 	title: string;
@@ -8,6 +11,7 @@ type IVerticalFeatureRowProps = {
 	image: string;
 	imageAlt: string;
 	reverse?: boolean;
+	CTA?: any;
 };
 
 const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
@@ -30,6 +34,11 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
 					{props.title}
 				</h3>
 				<div className="mt-6 text-xl leading-9">{props.description}</div>
+				{props.CTA && (
+					<Link className="mt-4 block" href={props.CTA.link}>
+						<Button>{props.CTA.text}</Button>
+					</Link>
+				)}
 			</div>
 
 			<div className="w-full sm:w-1/2 p-6 relative">

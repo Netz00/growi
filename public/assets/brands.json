@@ -27,7 +27,11 @@
 					"description": "Easily find perfect influencer for your brand by by searching over thousands influencers with various different filters (categories, engagment ratio, price, number of followers...).",
 					"image": "/assets/images/findInfluencers.png",
 					"imageAlt": "Find influencers",
-					"reverse": false
+					"reverse": false,
+					"CTA": {
+						"link": "/search",
+						"text": "Search"
+					}
 				},
 				{
 					"key": 1,
