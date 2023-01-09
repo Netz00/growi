@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import Base from '../templates/Base';
 
-const Index = ({ content }: any) => <Base {...content} />;
+const Index = (content: any) => <Base {...content} />;
 
 export async function getStaticProps() {
 	/**
@@ -12,9 +12,13 @@ export async function getStaticProps() {
 	const res = fs.readFileSync('public/assets/main.json');
 	const content = JSON.parse(res.toString());
 
+	const footer = fs.readFileSync('public/assets/footer.json');
+	const footerContent = JSON.parse(footer.toString());
+
 	return {
 		props: {
-			content,
+			...content,
+			footer: footerContent,
 		},
 	};
 }

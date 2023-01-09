@@ -13,10 +13,8 @@ const CenteredFooter = (props: ICenteredFooterProps) => (
 	<div className="text-center">
 		{props.logo}
 
-		<nav>
-			<ul className="navbar mt-5 flex flex-row justify-center font-medium text-xl text-gray-800">
-				{props.children}
-			</ul>
+		<nav className="text-start navbar mt-5 flex flex-row justify-center text-xl text-gray-800">
+			{props.children}
 		</nav>
 
 		<div className="mt-8 flex justify-center">
@@ -31,6 +29,9 @@ const CenteredFooter = (props: ICenteredFooterProps) => (
 			{`
 				.navbar :global(li) {
 					@apply mx-4;
+				}
+				.navbar :global(li:first-child) {
+					@apply font-medium;
 				}
 			`}
 		</style>

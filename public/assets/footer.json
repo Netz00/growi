@@ -1,0 +1,18 @@
+{
+	"sitemapItems": [
+		[
+			{ "value": "Welcome", "url": "/" },
+			{ "value": "About Us", "url": "/" },
+			{ "value": "Blog", "url": "/" }
+		],
+		[
+			{ "value": "Brands", "url": "/" },
+			{ "value": "Search", "url": "/" },
+			{ "value": "Join", "url": "/" }
+		],
+		[
+			{ "value": "Creators", "url": "/" },
+			{ "value": "Join", "url": "/" }
+		]
+	]
+}

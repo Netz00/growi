@@ -55,7 +55,7 @@ const Base = (props: IBaseProps) => (
 				</Link>
 			}
 		/>
-		<Footer />
+		<Footer {...props.footer} />
 	</div>
 );
 

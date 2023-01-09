@@ -3,9 +3,14 @@ import Link from 'next/link';
 import { Background } from '../components/background/Background';
 import { CenteredFooter } from '../components/footer/CenteredFooter';
 import { Section } from '../components/layout/Section';
+import { SitemapColum } from '../components/sitemap/SitemapColumn';
 import { Logo } from './Logo';
 
-const Footer = () => (
+type IFooterProps = {
+	sitemapItems: [JSON];
+};
+
+const Footer = (props: IFooterProps) => (
 	<Background color="bg-gray-100">
 		<Section>
 			<CenteredFooter
@@ -48,15 +53,15 @@ const Footer = () => (
 					</>
 				}
 			>
-				<li>
-					<Link href="/">Home</Link>
-				</li>
-				<li>
-					<Link href="/">About</Link>
-				</li>
-				<li>
-					<Link href="/">Docs</Link>
-				</li>
+				{props.sitemapItems?.map((column: any, key) => (
+					<SitemapColum key={key}>
+						{column?.map((row: any, key2: number) => (
+							<li key={key2}>
+								<Link href={row.url}>{row.value}</Link>
+							</li>
+						))}
+					</SitemapColum>
+				))}
 			</CenteredFooter>
 		</Section>
 	</Background>

@@ -56,7 +56,7 @@ const Search = (props: ISearchProps) => (
 				))}
 			</div>
 		</Section>
-		<Footer />
+		<Footer {...props.footer} />
 	</div>
 );
 
@@ -70,9 +70,13 @@ export async function getStaticProps() {
 	const res = fs.readFileSync('public/assets/search.json');
 	const content = JSON.parse(res.toString());
 
+	const footer = fs.readFileSync('public/assets/footer.json');
+	const footerContent = JSON.parse(footer.toString());
+
 	return {
 		props: {
 			...content,
+			footer: footerContent,
 		},
 	};
 }
