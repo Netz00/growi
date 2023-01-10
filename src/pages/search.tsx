@@ -3,6 +3,7 @@ import fs from 'fs';
 import Link from 'next/link';
 
 import { Background } from '../components/background/Background';
+import { Button } from '../components/button/Button';
 import { InfluencerCard } from '../components/card/InfluencerCard';
 import { Category } from '../components/filters/Category';
 import { SearchBox } from '../components/input/SearchBox';
@@ -44,9 +45,12 @@ const Search = (props: ISearchProps) => (
 					<Category {...item} key={item.key} />
 				))}
 			</div>
+			<Link className="m-auto block w-fit mt-4" href="/">
+				<Button>See all categories</Button>
+			</Link>
 		</Section>
 		<Section
-			description="Todays' best picks"
+			description="Today's best picks"
 			yPadding="pt-6 pb-6"
 			textBottomMargin="mb-10"
 		>
@@ -55,6 +59,9 @@ const Search = (props: ISearchProps) => (
 					<InfluencerCard {...item} key={item.key} />
 				))}
 			</div>
+			<Link className="m-auto block w-fit my-10" href="/">
+				<Button>See more</Button>
+			</Link>
 		</Section>
 		<Footer {...props.footer} />
 	</div>

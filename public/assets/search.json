@@ -9,14 +9,6 @@
 			{ "key": 5, "text": "Log In", "link": "/login" }
 		]
 	},
-	"banner": {
-		"title": "Want to help?",
-		"subtitle": "We are always seeking for experts open open for interview.",
-		"button": {
-			"text": "Get Started",
-			"link": "/"
-		}
-	},
 	"categories": [
 		{
 			"key": 0,
