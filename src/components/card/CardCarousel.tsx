@@ -60,6 +60,7 @@ const CardCarousel = (props: ICardCarouselProps) => {
 									width="100%"
 									height="100%"
 									url={`../${element.url}`}
+									className="bg-gradient-to-b from-white via-black to-white"
 									config={{
 										file: {
 											attributes: {
@@ -80,9 +81,8 @@ const CardCarousel = (props: ICardCarouselProps) => {
 						key={element.key}
 						type="button"
 						className={`w-3 h-3 rounded-full
-                        ${
-							activeMedia === index ? 'bg-white' : 'bg-white/30'
-						}hover:bg-white/50
+                        ${activeMedia === index ? 'bg-white' : 'bg-white/30'}
+                        hover:bg-white/50
                         focus:ring-1 focus:ring-white focus:outline-none
                         sm:w-4 sm:h-4 
                         border-solid border-white border-2`}
