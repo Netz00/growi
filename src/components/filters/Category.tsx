@@ -29,10 +29,8 @@ const Category = (props: ICategoryProps) => {
 			</div>
 
 			<div className="text-center sm:px-6 mx-auto mt-3">
-				<h3 className="text-3xl text-gray-900 font-semibold">
-					{props.name}
-				</h3>
-				<div className="mt-6 text-xl leading-9">{props.description}</div>
+				<h3 className="text-xl text-gray-900 font-semibold">{props.name}</h3>
+				<div className="mt-6 text-xs leading-9">{props.description}</div>
 			</div>
 		</div>
 	);
