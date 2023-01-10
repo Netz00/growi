@@ -12,7 +12,7 @@ type IFooterProps = {
 
 const Footer = (props: IFooterProps) => (
 	<Background color="bg-gray-100">
-		<Section>
+		<Section bPadding="pb-6">
 			<CenteredFooter
 				logo={<Logo />}
 				iconList={

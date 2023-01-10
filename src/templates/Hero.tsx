@@ -21,7 +21,7 @@ const Hero = (props: IHeroProps) => (
 			</CagaljsNavbarItems>
 		</Section>
 
-		<Section yPadding="pt-20 pb-32">
+		<Section yPadding="md:pt-20 md:pb-32 pb-10">
 			<HeroContent {...props} />
 		</Section>
 	</Background>
