@@ -43,7 +43,7 @@ const Search = (props: ISearchProps) => (
 			yPadding="pt-6 pb-6"
 			textBottomMargin="mb-0"
 		>
-			<div className="flex flex-row gap-10 flex-nowrap justify-center overflow-auto whitespace-nowrap overflow-y-hidden pt-12">
+			<div className="flex flex-row gap-14 max-md:gap-10 flex-nowrap justify-center overflow-auto whitespace-nowrap overflow-y-hidden pt-12">
 				{props.categories?.map((item: any) => (
 					<Category {...item} key={item.key} />
 				))}
@@ -57,7 +57,7 @@ const Search = (props: ISearchProps) => (
 			yPadding="pt-6 pb-6"
 			textBottomMargin="mb-10"
 		>
-			<div className="flex flex-row gap-10 flex-wrap justify-center">
+			<div className="flex flex-row gap-16 max-md:gap-10 flex-wrap justify-center">
 				{props.influencers?.map((item: any) => (
 					<InfluencerCard {...item} key={item.key} />
 				))}
