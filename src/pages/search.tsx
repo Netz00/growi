@@ -18,7 +18,10 @@ type ISearchProps = any;
 
 const Search = (props: ISearchProps) => (
 	<div className="antialiased text-gray-600">
-		<Meta title={AppConfig.title} description={AppConfig.description} />
+		<Meta
+			title={props.siteTitle ?? AppConfig.title}
+			description={props.siteDescription ?? AppConfig.description}
+		/>
 
 		<Background color="bg-gray-100">
 			<Section yPadding="py-6">

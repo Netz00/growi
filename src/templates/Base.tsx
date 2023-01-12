@@ -12,7 +12,10 @@ type IBaseProps = any;
 
 const Base = (props: IBaseProps) => (
 	<div className="antialiased text-gray-600">
-		<Meta title={AppConfig.title} description={AppConfig.description} />
+		<Meta
+			title={props.siteTitle ?? AppConfig.title}
+			description={props.siteDescription ?? AppConfig.description}
+		/>
 		<Hero
 			navBarItems={
 				<>

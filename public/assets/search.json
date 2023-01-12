@@ -1,4 +1,6 @@
 {
+	"siteTitle": "Search",
+	"siteDescription": "Find influencers!",
 	"hero": {
 		"navBarLinks": [
 			{ "key": 0, "text": "Home", "link": "/brands" },

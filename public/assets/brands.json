@@ -1,4 +1,6 @@
 {
+	"siteTitle": "Brands",
+	"siteDescription": "Grow your business.",
 	"hero": {
 		"navBarLinks": [
 			{ "key": 0, "text": "Home", "link": "/brands" },

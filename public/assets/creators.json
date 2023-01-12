@@ -1,4 +1,6 @@
 {
+	"siteTitle": "Creators",
+	"siteDescription": "Monetize your influence!",
 	"hero": {
 		"navBarLinks": [
 			{ "key": 0, "text": "Home", "link": "/creators" },

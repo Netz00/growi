@@ -1,4 +1,6 @@
 {
+	"siteTitle": "Growi",
+	"siteDescription": "Influencer marketing platform.",
 	"hero": {
 		"navBarLinks": [{ "key": 0, "text": "", "link": "" }],
 		"title": {
