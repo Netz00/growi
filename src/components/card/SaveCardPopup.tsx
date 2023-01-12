@@ -45,7 +45,7 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 						<Exit />
 					</Clickable>
 				</div>
-				<div className="flex flex-col gap-3 my-2 overflow-y-auto bg-scroll max-h-40">
+				<div className="custom_scrollbar flex flex-col gap-3 my-2 overflow-y-auto bg-scroll max-h-40">
 					{lists.map((list, key) => (
 						<div
 							key={key}

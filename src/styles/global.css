@@ -23,7 +23,7 @@ DOESN'T WORK!
 
 /* custom scrollbar */
 ::-webkit-scrollbar {
-	width: 20px;
+	width: 16px;
 }
 
 ::-webkit-scrollbar-track {
@@ -31,12 +31,18 @@ DOESN'T WORK!
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #d6dee1;
-	border-radius: 20px;
+	@apply bg-slate-300;
+	border-radius: 15px 0 0 20px;
 	border: 6px solid transparent;
 	background-clip: content-box;
+	@apply border-r-0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color: #a8bbbf;
+	@apply bg-slate-400;
+}
+
+.custom_scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 20px;
+	border: 6px solid transparent;
 }
