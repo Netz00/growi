@@ -19,11 +19,20 @@ const Base = (props: IBaseProps) => (
 		<Hero
 			navBarItems={
 				<>
-					{props.hero.navBarLinks?.map((item: any) => (
-						<li key={item.key}>
-							<Link href={item.link}>{item.text}</Link>
-						</li>
-					))}
+					{props.hero.navBarLinks?.map((item: any) =>
+						item.active ? (
+							<li
+								key={item.key}
+								className="underline underline-offset-2 decoration-primary-400 text-primary-400 pointer-events-none"
+							>
+								{item.text}
+							</li>
+						) : (
+							<li key={item.key}>
+								<Link href={item.link}>{item.text}</Link>
+							</li>
+						)
+					)}
 				</>
 			}
 			title={

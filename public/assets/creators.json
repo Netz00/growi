@@ -3,11 +3,11 @@
 	"siteDescription": "Monetize your influence!",
 	"hero": {
 		"navBarLinks": [
-			{ "key": 0, "text": "Home", "link": "/creators" },
-			{ "key": 1, "text": "Blog", "link": "/blog" },
-			{ "key": 2, "text": "About Us", "link": "/about" },
-			{ "key": 3, "text": "Sign Up", "link": "/signup" },
-			{ "key": 4, "text": "Log In", "link": "/login" }
+			{ "key": 0, "text": "Home", "link": "/creators", "active": true },
+			{ "key": 1, "text": "Blog", "link": "/blog", "active": false },
+			{ "key": 2, "text": "About Us", "link": "/about", "active": false },
+			{ "key": 3, "text": "Sign Up", "link": "/signup", "active": false },
+			{ "key": 4, "text": "Log In", "link": "/login", "active": false }
 		],
 		"title": {
 			"part1": "Monetize your influence with\n",

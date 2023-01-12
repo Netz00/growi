@@ -3,12 +3,12 @@
 	"siteDescription": "Find influencers!",
 	"hero": {
 		"navBarLinks": [
-			{ "key": 0, "text": "Home", "link": "/brands" },
-			{ "key": 1, "text": "Search", "link": "/search" },
-			{ "key": 2, "text": "Blog", "link": "/blog" },
-			{ "key": 3, "text": "About Us", "link": "/about" },
-			{ "key": 4, "text": "Sign Up", "link": "/signup" },
-			{ "key": 5, "text": "Log In", "link": "/login" }
+			{ "key": 0, "text": "Home", "link": "/brands", "active": false },
+			{ "key": 1, "text": "Search", "link": "/search", "active": true },
+			{ "key": 2, "text": "Blog", "link": "/blog", "active": false },
+			{ "key": 3, "text": "About Us", "link": "/about", "active": false },
+			{ "key": 4, "text": "Sign Up", "link": "/signup", "active": false },
+			{ "key": 5, "text": "Log In", "link": "/login", "active": false }
 		]
 	},
 	"categories": [

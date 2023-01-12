@@ -26,11 +26,20 @@ const Search = (props: ISearchProps) => (
 		<Background color="bg-gray-100">
 			<Section yPadding="py-6">
 				<CagaljsNavbarItems logo={<Logo xl />}>
-					{props.hero?.navBarLinks?.map((item: any) => (
-						<li key={item.key}>
-							<Link href={item.link}>{item.text}</Link>
-						</li>
-					))}
+					{props.hero.navBarLinks?.map((item: any) =>
+						item.active ? (
+							<li
+								key={item.key}
+								className="underline underline-offset-2 decoration-primary-400 text-primary-400 pointer-events-none"
+							>
+								{item.text}
+							</li>
+						) : (
+							<li key={item.key}>
+								<Link href={item.link}>{item.text}</Link>
+							</li>
+						)
+					)}
 				</CagaljsNavbarItems>
 			</Section>
 
