@@ -3,6 +3,7 @@ import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 
 import useComponentVisible from '../../hooks/useComponentVisible';
+import useWindowSize from '../../hooks/useWindowSize';
 import { detectWrapItems, getWrapItems } from '../../hooks/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
@@ -18,12 +19,13 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 		setIsComponentVisible: setDropdown,
 	} = useComponentVisible(false);
 
+	const windowSize = useWindowSize();
+
 	useEffect(() => {
+		const button = document.getElementById('dropdownMenuButton');
 		// are there any?
 		if (detectWrapItems('navBar', 'li')) {
 			// add navbar button
-			const button = document.getElementById('dropdownMenuButton');
-
 			if (button !== null) button.style.display = 'block';
 
 			// recalculate again because button was added
@@ -40,7 +42,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 				document.getElementById('dropdown')!.appendChild(fragment);
 			}, 1);
 		}
-	}, []);
+	}, [windowSize]);
 
 	return (
 		<>
