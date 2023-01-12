@@ -44,7 +44,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 
 	return (
 		<>
-			<div className="flex justify-between items-center gap-8">
+			<div className="flex justify-between items-center gap-8 px-3">
 				<div>
 					<Link href="/" legacyBehavior>
 						<a>{props.logo}</a>
@@ -65,9 +65,9 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 							isDropdownVisible ? 'rotate-90' : 'rotate-0'
 						} h-fit hidden items-center 
                         p-2 text-sm font-medium text-center text-gray-900 rounded-lg 
-                        hover:bg-gray-100 focus:ring-4
+                        hover:bg-slate-100 focus:ring-4
                         focus:ring-gray-50
-                        hover:rotate-90 duration-200`}
+                        duration-200`}
 						type="button"
 						onClick={() => setDropdown(!isDropdownVisible)}
 					>
@@ -84,14 +84,73 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 				</nav>
 			</div>
 
-			<div className="ml-auto w-fit">
+			<div className="relative">
 				<ul
 					ref={ref}
 					id="dropdown"
-					className={`ml-auto w-fit ${
+					className={`w-fit ${
 						isDropdownVisible ? 'flex' : 'hidden'
-					} flex-col items-end gap-5 font-medium text-xl text-gray-800`}
-				></ul>
+					} flex-col items-start gap-5 font-medium text-xl text-gray-800 pl-6 pr-10 py-3 absolute right-0
+                    bg-gray-100 outline outline-1 outline-slate-200
+                    dropdown_menu
+                    `}
+				>
+					{/** Wrapped items ... */}
+
+					<style jsx>
+						{`
+							.dropdown_menu {
+								animation: growDown 300ms ease-in-out forwards;
+								transform-origin: top center;
+							}
+
+							@-moz-keyframes growDown {
+								0% {
+									transform: scaleY(0);
+								}
+								80% {
+									transform: scaleY(1.1);
+								}
+								100% {
+									transform: scaleY(1);
+								}
+							}
+							@-webkit-keyframes growDown {
+								0% {
+									transform: scaleY(0);
+								}
+								80% {
+									transform: scaleY(1.1);
+								}
+								100% {
+									transform: scaleY(1);
+								}
+							}
+							@-o-keyframes growDown {
+								0% {
+									transform: scaleY(0);
+								}
+								80% {
+									transform: scaleY(1.1);
+								}
+								100% {
+									transform: scaleY(1);
+								}
+							}
+							@keyframes growDown {
+								0% {
+									transform: scaleY(0);
+								}
+								80% {
+									transform: scaleY(1.1);
+								}
+								100% {
+									transform: scaleY(1);
+								}
+							}
+						`}
+					</style>
+				</ul>
 			</div>
 		</>
 	);
