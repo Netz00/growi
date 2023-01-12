@@ -29,7 +29,7 @@ const Base = (props: IBaseProps) => (
 			title={
 				<>
 					{props.hero.title.part1}
-					<span className="text-primary-500">
+					<span className="text-primary-400">
 						{props.hero.title.part2}
 					</span>
 				</>
