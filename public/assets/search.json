@@ -70,8 +70,8 @@
 			"engagmentRatioPercentage": 5.43,
 			"rating": 4.3,
 			"reviewsNumber": 15,
-			"tags": ["family", "baby", "mother", "traveling", "comestics"],
-			"startingPrice": "100"
+			"tags": ["family", "baby", "mother"],
+			"startingPrice": 100
 		},
 		{
 			"key": 1,
@@ -103,10 +103,10 @@
 			"location": { "country": "Croatia", "city": "Split" },
 			"followersNumber": 25830,
 			"engagmentRatioPercentage": 7.02,
-			"rating": 4.8,
+			"rating": 2.8,
 			"reviewsNumber": 120,
 			"tags": ["sport", "dancing", "poledancing", "fitness", "healtylife"],
-			"startingPrice": "430"
+			"startingPrice": 430.4
 		},
 		{
 			"key": 2,
@@ -141,7 +141,7 @@
 			"rating": 4.3,
 			"reviewsNumber": 15,
 			"tags": ["family", "baby", "mother", "traveling", "comestics"],
-			"startingPrice": "570"
+			"startingPrice": 570.99
 		},
 		{
 			"key": 3,
@@ -176,7 +176,7 @@
 			"rating": 4.3,
 			"reviewsNumber": 15,
 			"tags": ["family", "baby", "mother", "traveling", "comestics"],
-			"startingPrice": "570"
+			"startingPrice": 570
 		}
 	]
 }

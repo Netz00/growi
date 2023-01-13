@@ -37,6 +37,10 @@ module.exports = {
 					800: '#2d3748',
 					900: '#1a202c',
 				},
+				brands: {
+					orange: '#EB7F57',
+					olive: '#9FA5AC',
+				},
 			},
 			lineHeight: {
 				hero: '4.5rem',

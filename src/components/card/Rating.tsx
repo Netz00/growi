@@ -24,7 +24,9 @@ const Rating = (props: IStarsProps) => {
 	return (
 		<div className="flex items-center">
 			{stars.map((el) => (
-				<Star {...el} key={el.key} />
+				<div key={el.key} className="px-1">
+					<Star {...el} />
+				</div>
 			))}
 
 			<span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-3">

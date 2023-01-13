@@ -28,9 +28,21 @@ const ProfileStats = (props: IProfileStatsProps) => {
 	const followersNumber = abbreviateNumber(props.followersNumber);
 
 	return (
-		<span className="w-fit">
-			<p>{followersNumber}</p> <p>{props.engagmentRatioPercentage} %</p>
-		</span>
+		<div className="flex justify-evenly bg-brands-olive p-2 rounded-lg">
+			<div className="text-center">
+				<p className="text-slate-50 text-2xl font-medium">
+					{followersNumber}
+				</p>
+				<p className="text-slate-100 text-xs">Followers</p>
+			</div>
+
+			<div className="text-center">
+				<p className="text-slate-100 text-2xl font-medium">
+					{props.engagmentRatioPercentage}%
+				</p>
+				<p className="text-slate-200 text-xs">Engagment</p>
+			</div>
+		</div>
 	);
 };
 

@@ -44,45 +44,53 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col gap-4`}
 			>
 				<CardCarousel media={[...props.media]} />
-				<div className="flex flex-col gap-2 px-8">
-					<a className="flex flex-row gap-6 items-center">
-						<div
-							className="w-16 h-16 max-md:w-10 max-md:h-10 relative rounded-full
-				overflow-hidden"
-						>
-							<Image
-								src={`${router.basePath}${props.profileImage}`}
-								alt={props.profileImageAlt}
-								fill
-								style={{ objectFit: 'cover', position: 'absolute' }}
-								sizes="(max-width: 113px) 15vw,
-                    (max-width: 200px) 8vw,
-                    5vw"
-							/>
-						</div>
-						<span>
-							<p>@{props.username} </p>
-							<p>
-								{props.firstName} {props.lastName}
-							</p>
-						</span>
-					</a>
+				<div className="flex flex-col gap-4 px-5">
 					<div className="flex flex-row justify-between">
+						<a className="flex flex-row gap-2 items-center">
+							<div
+								className="w-16 h-16 max-md:w-10 max-md:h-10 relative rounded-full
+				                            overflow-hidden"
+							>
+								<Image
+									src={`${router.basePath}${props.profileImage}`}
+									alt={props.profileImageAlt}
+									fill
+									style={{
+										objectFit: 'cover',
+										position: 'absolute',
+									}}
+									sizes="(max-width: 113px) 15vw,
+                                            (max-width: 200px) 8vw,
+                                            5vw"
+								/>
+							</div>
+							<span>
+								<p className="text-slate-600 font-semibold">
+									@{props.username}{' '}
+								</p>
+								<p>
+									{props.firstName} {props.lastName}
+								</p>
+							</span>
+						</a>
 						<Location {...props.location} />
-						<ProfileStats {...props} />
 					</div>
-
-					<h5 className="text-base font-semibold tracking-tight text-gray-900">
+					<ProfileStats {...props} />
+					<p
+						className="font-semibold tracking-tight text-gray-700
+                                   overflow-hidden text-ellipsis h-6 whitespace-pre-line"
+					>
 						{props.tags.map((tag) => `#${tag} `)}
-					</h5>
+					</p>
 					<Rating {...props} />
 				</div>
-				<div className="px-5 pt-2 pb-3 border-solid border-t border-black flex items-center justify-between">
-					<span className="text-3xl font-bold text-gray-900">
-						{`$${(Math.round(props.startingPrice * 100) / 100).toFixed(
-							2
-						)}`}
-					</span>
+				<div className="px-5 py-1 border-solid border-t border-gray-400 flex items-center justify-between">
+					<div className="text-left">
+						<p className="text-xs leading-3">Starting at</p>
+						<p className="text-2xl font-bold text-gray-900">
+							{`$${Math.round(props.startingPrice)}`}
+						</p>
+					</div>
 
 					<div ref={refButton}>
 						<Clickable
