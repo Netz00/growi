@@ -23,7 +23,7 @@ const Base = (props: IBaseProps) => (
 						item.active ? (
 							<li
 								key={item.key}
-								className="underline underline-offset-2 decoration-primary-400 text-primary-400 pointer-events-none"
+								className="underline underline-offset-2 decoration-primary-500 text-primary-500 pointer-events-none"
 							>
 								{item.text}
 							</li>
@@ -38,7 +38,7 @@ const Base = (props: IBaseProps) => (
 			title={
 				<>
 					{props.hero.title.part1}
-					<span className="text-primary-400">
+					<span className="text-primary-500">
 						{props.hero.title.part2}
 					</span>
 				</>

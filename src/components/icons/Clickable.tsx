@@ -11,7 +11,7 @@ const Clickable = (props: IClickableProps) => (
 	<span
 		className={`text-black 
                                     focus:ring-4 focus:outline-none focus:ring-primary-300 
-                                   ${props.hover && 'hover:text-primary-400'}
+                                   ${props.hover && 'hover:text-primary-500'}
                                    ${
 										props.scale &&
 										'transition ease-in-out delay-150 hover:transition-transform hover:scale-125'

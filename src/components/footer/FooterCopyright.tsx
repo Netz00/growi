@@ -10,7 +10,7 @@ const FooterCopyright = () => (
 		<style jsx>
 			{`
 				.footer-copyright :global(a) {
-					@apply text-primary-400;
+					@apply text-primary-500;
 				}
 
 				.footer-copyright :global(a:hover) {

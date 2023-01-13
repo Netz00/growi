@@ -30,7 +30,7 @@ const Search = (props: ISearchProps) => (
 						item.active ? (
 							<li
 								key={item.key}
-								className="underline underline-offset-2 decoration-primary-400 text-primary-400 pointer-events-none"
+								className="underline underline-offset-2 decoration-primary-500 text-primary-500 pointer-events-none"
 							>
 								{item.text}
 							</li>
