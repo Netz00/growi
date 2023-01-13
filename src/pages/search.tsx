@@ -10,8 +10,8 @@ import { SearchBox } from '../components/input/SearchBox';
 import { Meta } from '../components/layout/Meta';
 import { Section } from '../components/layout/Section';
 import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
-import { Footer } from '../templates/Footer';
-import { Logo } from '../templates/Logo';
+import { Footer } from '../components/templates/Footer';
+import { Logo } from '../components/templates/Logo';
 import { AppConfig } from '../utils/AppConfig';
 
 type ISearchProps = any;

@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import Base from '../templates/Base';
+import Base from '../components/templates/Base';
 
 const Creators = (content: any) => <Base {...content} />;
 

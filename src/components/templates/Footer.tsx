@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { Background } from '../components/background/Background';
-import { CenteredFooter } from '../components/footer/CenteredFooter';
-import { Section } from '../components/layout/Section';
-import { SitemapColum } from '../components/sitemap/SitemapColumn';
+import { Background } from '../background/Background';
+import { CenteredFooter } from '../footer/CenteredFooter';
+import { Section } from '../layout/Section';
+import { SitemapColum } from '../sitemap/SitemapColumn';
 import { Logo } from './Logo';
 
 type IFooterProps = {

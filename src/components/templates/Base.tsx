@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { Button } from '../components/button/Button';
-import { Meta } from '../components/layout/Meta';
-import { AppConfig } from '../utils/AppConfig';
+import { AppConfig } from '../../utils/AppConfig';
+import { Button } from '../button/Button';
+import { Meta } from '../layout/Meta';
 import { Banner } from './Banner';
 import { Footer } from './Footer';
 import { Hero } from './Hero';

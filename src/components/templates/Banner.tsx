@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-import { CTABanner } from '../components/cta/CTABanner';
-import { Section } from '../components/layout/Section';
+import { CTABanner } from '../cta/CTABanner';
+import { Section } from '../layout/Section';
 
 type IBannerProps = {
 	title: string;
