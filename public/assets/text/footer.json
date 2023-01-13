@@ -6,12 +6,12 @@
 			{ "value": "Blog", "url": "/" }
 		],
 		[
-			{ "value": "Brands", "url": "/" },
-			{ "value": "Search", "url": "/" },
+			{ "value": "Brands", "url": "/brands" },
+			{ "value": "Search", "url": "/search" },
 			{ "value": "Join", "url": "/" }
 		],
 		[
-			{ "value": "Creators", "url": "/" },
+			{ "value": "Creators", "url": "/creators" },
 			{ "value": "Join", "url": "/" }
 		]
 	]
