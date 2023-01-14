@@ -50,7 +50,7 @@ const Creators = (props: any) => (
 						xl
 						color="bg-creators-primary-100 hover:bg-creators-primary-200"
 					>
-						{props.hero.button_2.text}
+						{props.hero.button_1.text}
 					</Button>
 				</Link>
 			}
@@ -77,10 +77,10 @@ export async function getStaticProps() {
 	 * TODO
 	 * replace with headless CMS
 	 */
-	const res = fs.readFileSync('public/assets/text/creators.json');
+	const res = fs.readFileSync('public/assets/i18n/creators.json');
 	const content = JSON.parse(res.toString());
 
-	const footer = fs.readFileSync('public/assets/text/footer.json');
+	const footer = fs.readFileSync('public/assets/i18n/footer.json');
 	const footerContent = JSON.parse(footer.toString());
 
 	return {

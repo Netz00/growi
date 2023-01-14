@@ -77,10 +77,10 @@ export async function getStaticProps() {
 	 * TODO
 	 * replace with headless CMS
 	 */
-	const res = fs.readFileSync('public/assets/text/brands.json');
+	const res = fs.readFileSync('public/assets/i18n/brands.json');
 	const content = JSON.parse(res.toString());
 
-	const footer = fs.readFileSync('public/assets/text/footer.json');
+	const footer = fs.readFileSync('public/assets/i18n/footer.json');
 	const footerContent = JSON.parse(footer.toString());
 
 	return {

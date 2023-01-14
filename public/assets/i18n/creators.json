@@ -14,7 +14,7 @@
 			"part2": "influence"
 		},
 		"description": "Connect with brands and monetize your influence.",
-		"button_1": { "key": 0, "text": "Join now!", "link": "/creators/join" }
+		"button_1": { "text": "Join now!", "link": "/creators/join" }
 	},
 	"sections": [
 		{

@@ -7,9 +7,9 @@
 			"part1": "The modern solutions for\n",
 			"part2": "Influencer marketing"
 		},
-		"description": "Grow Your Business Quickly.",
+		"description": "We connect creators and brands.",
 		"button_1": { "text": "I'm a brand", "link": "/brands" },
-		"button_2": { "key": 1, "text": "I'm a creator", "link": "/creators" }
+		"button_2": { "text": "I'm a creator", "link": "/creators" }
 	},
 	"sections": [
 		{
