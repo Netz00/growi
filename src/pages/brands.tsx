@@ -46,7 +46,12 @@ const Brands = (props: any) => (
 			description={props.hero.description}
 			buttons={
 				<Link href={props.hero.button_1.link}>
-					<Button xl>{props.hero.button_1.text}</Button>
+					<Button
+						xl
+						color="bg-brands-primary-300 hover:bg-brands-primary-400"
+					>
+						{props.hero.button_1.text}
+					</Button>
 				</Link>
 			}
 		/>

@@ -46,7 +46,12 @@ const Creators = (props: any) => (
 			description={props.hero.description}
 			buttons={
 				<Link href={props.hero.button_1.link}>
-					<Button xl>{props.hero.button_1.text}</Button>
+					<Button
+						xl
+						color="bg-creators-primary-100 hover:bg-creators-primary-200"
+					>
+						{props.hero.button_2.text}
+					</Button>
 				</Link>
 			}
 		/>

@@ -38,8 +38,24 @@ module.exports = {
 					900: '#1a202c',
 				},
 				brands: {
-					orange: '#EB7F57',
-					olive: '#9FA5AC',
+					primary: {
+						100: '#B0C5B0',
+						200: '#8BB4A6',
+						300: '#67A1A1',
+						400: '#498D9F',
+						500: '#3D7799',
+						600: '#455E8C',
+					},
+				},
+				creators: {
+					primary: {
+						100: '#EB7F57',
+						200: '#D76777',
+						300: '#AC5F8C',
+						400: '#765C8C',
+						500: '#475578',
+						600: '#2F4858',
+					},
 				},
 			},
 			lineHeight: {
@@ -48,6 +64,10 @@ module.exports = {
 			fontFamily: {
 				bellota: ['Bellota', 'sans-cursive'],
 			},
+			backgroundImage: () => ({
+				'gradient-instagram':
+					'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+			}),
 		},
 	},
 	plugins: [],
