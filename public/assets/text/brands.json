@@ -15,7 +15,7 @@
 			"part2": "Audience"
 		},
 		"description": "The easiest way to grow your business.",
-		"buttons": [{ "key": 0, "text": "Join now!", "link": "/brands/join" }]
+		"button_1": { "text": "Join now!", "link": "/brands/join" }
 	},
 	"sections": [
 		{

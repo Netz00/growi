@@ -45,13 +45,9 @@ const Creators = (props: any) => (
 			}
 			description={props.hero.description}
 			buttons={
-				<>
-					{props.hero.buttons.map((button: any) => (
-						<Link key={button.key} href={button.link}>
-							<Button xl>{button.text}</Button>
-						</Link>
-					))}
-				</>
+				<Link href={props.hero.button_1.link}>
+					<Button xl>{props.hero.button_1.text}</Button>
+				</Link>
 			}
 		/>
 

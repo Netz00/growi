@@ -8,10 +8,8 @@
 			"part2": "Influencer marketing"
 		},
 		"description": "The easiest way to grow your business.",
-		"buttons": [
-			{ "key": 0, "text": "I'm a brand", "link": "/brands" },
-			{ "key": 1, "text": "I'm a creator", "link": "/creators" }
-		]
+		"button_1": { "text": "I'm a brand", "link": "/brands" },
+		"button_2": { "key": 1, "text": "I'm a creator", "link": "/creators" }
 	},
 	"sections": [
 		{

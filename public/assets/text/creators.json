@@ -10,11 +10,11 @@
 			{ "key": 4, "text": "Log In", "link": "/login", "active": false }
 		],
 		"title": {
-			"part1": "Monetize your influence with\n",
-			"part2": "Influencer marketing"
+			"part1": "Monetize your\n",
+			"part2": "influence"
 		},
 		"description": "The best place to connect with brands and monetize your influence.",
-		"buttons": [{ "key": 0, "text": "Join now!", "link": "/creators/join" }]
+		"button_1": { "key": 0, "text": "Join now!", "link": "/creators/join" }
 	},
 	"sections": [
 		{
