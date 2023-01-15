@@ -6,7 +6,7 @@ import { Background } from '../components/background/Background';
 import { Button } from '../components/button/Button';
 import { InfluencerCard } from '../components/card/InfluencerCard';
 import { Category } from '../components/filters/Category';
-import { SearchBox } from '../components/input/SearchBox';
+import Autocomplete from '../components/input/Autocomplete';
 import { Meta } from '../components/layout/Meta';
 import { Section } from '../components/layout/Section';
 import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
@@ -44,7 +44,7 @@ const Search = (props: ISearchProps) => (
 			</Section>
 
 			<Section yPadding="pt-20 pb-32">
-				<SearchBox />
+				<Autocomplete />
 			</Section>
 		</Background>
 		<Section
