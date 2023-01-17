@@ -8,6 +8,7 @@ import { detectWrapItems, getWrapItems } from '../../hooks/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
 	logo: ReactNode;
+	search?: ReactNode;
 	children: ReactNode;
 };
 
@@ -46,12 +47,14 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 
 	return (
 		<>
-			<div className="flex justify-between items-center gap-8 px-3">
+			<div className="flex justify-between items-center md:gap-8 gap-4 px-6">
 				<div>
 					<Link href="/" legacyBehavior>
-						<a>{props.logo}</a>
+						<a className="flex">{props.logo}</a>
 					</Link>
 				</div>
+				{props.search && <div>{props.search}</div>}
+
 				<nav className="flex gap-4">
 					<ul
 						id="navBar"
@@ -94,7 +97,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 						isDropdownVisible ? 'flex' : 'hidden'
 					} flex-col items-start gap-5 font-medium text-xl text-gray-800 pl-6 pr-10 py-3 absolute right-0
                     bg-gray-100 outline outline-1 outline-slate-200
-                    dropdown_menu
+                    dropdown_menu z-20
                     `}
 				>
 					{/** Wrapped items ... */}

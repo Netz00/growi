@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
+
 type IButtonProps = {
 	xl?: boolean;
-	children: string;
+	children: ReactNode;
 	color?: string;
 };
 

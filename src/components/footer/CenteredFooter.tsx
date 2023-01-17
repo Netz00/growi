@@ -13,7 +13,7 @@ const CenteredFooter = (props: ICenteredFooterProps) => (
 	<div className="text-center">
 		{props.logo}
 
-		<nav className="text-start navbar mt-5 flex flex-row justify-center text-xl text-gray-800">
+		<nav className="text-start navbar mt-5 flex md:gap-16 flex-row justify-center text-xl text-gray-800">
 			{props.children}
 		</nav>
 

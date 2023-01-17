@@ -21,7 +21,7 @@ const Section = (props: ISectionProps) => (
 			<div
 				className={`${
 					props.textBottomMargin ? props.textBottomMargin : 'mb-12'
-				} text-center`}
+				} text-center px-3`}
 			>
 				{props.title && (
 					<h2 className="text-4xl text-gray-900 font-bold">

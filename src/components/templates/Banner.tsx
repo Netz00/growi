@@ -10,7 +10,7 @@ type IBannerProps = {
 };
 
 const Banner = (props: IBannerProps) => (
-	<Section>
+	<Section yPadding="mt-0 mb-10">
 		<CTABanner {...props} />
 	</Section>
 );

@@ -24,7 +24,7 @@ const Search = (props: ISearchProps) => (
 		/>
 
 		<Background color="bg-gray-100">
-			<Section yPadding="py-6">
+			<Section yPadding="py-6" xPadding="px-0">
 				<CagaljsNavbarItems logo={<Logo xl />}>
 					{props.hero.navBarLinks?.map((item: any) =>
 						item.active ? (
@@ -68,7 +68,7 @@ const Search = (props: ISearchProps) => (
 		>
 			<div className="flex flex-row gap-16 max-md:gap-10 flex-wrap justify-center">
 				{props.influencers?.map((item: any) => (
-					<InfluencerCard {...item} key={item.key} />
+					<InfluencerCard {...item} key={item.id} />
 				))}
 			</div>
 			<Link className="m-auto block w-fit my-10" href="/">
@@ -92,10 +92,22 @@ export async function getStaticProps() {
 	const footer = fs.readFileSync('public/assets/i18n/footer.json');
 	const footerContent = JSON.parse(footer.toString());
 
+	const data = fs.readFileSync('public/assets/data/creatorProfiles.json');
+	const influencerProfiles = JSON.parse(data.toString());
+
+	const nums = new Set();
+	while (nums.size !== 4) {
+		nums.add(Math.floor(Math.random() * 68));
+	}
+
+	const influencers = influencerProfiles.filter((el: any) => nums.has(el.id));
+
 	return {
 		props: {
 			...content,
 			footer: footerContent,
+			influencers,
 		},
+		revalidate: 30,
 	};
 }

@@ -30,7 +30,7 @@ type AutocompleteState = {
 
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
-const Autocomplete = () => {
+const AutocompleteSmall = () => {
 	const router = useRouter();
 	const [autocomplete, setAutocomplete] = useState<AutocompleteState>({
 		activeSuggestion: 0,
@@ -57,35 +57,6 @@ const Autocomplete = () => {
 			})
 		)
 	);
-
-	/**
-     * TODO
-     * 
-    	const delayedQuery = useCallback(
-		_.debounce((userInput: string) => {
-			const result = search(userInput);
-			const filteredSuggestions = result.map(
-				(el: any) => el.item as Suggestion
-			);
-			setAutocomplete({
-				userInput,
-				activeSuggestion: 0,
-				filteredSuggestions,
-				showSuggestions: true,
-			});
-		}, 300),
-		[]
-	);
-	// Event listener called on every change
-	const onChange = (e: any) => {
-		const userInput = e.currentTarget.value;
-		setAutocomplete({
-			...autocomplete,
-			userInput,
-		});
-		delayedQuery(userInput);
-	};
-     */
 
 	// Event listener called on every change
 	const onChange = (e: any) => {
@@ -200,7 +171,7 @@ const Autocomplete = () => {
 				</div>
 				<input
 					type="search"
-					className="block w-full p-4 pl-10 pr-28 text-gray-900 
+					className="block w-full p-2 pl-10 pr-4 md:pr-24  text-gray-900 
                     border border-gray-300 rounded-lg bg-gray-50 focus:outline-blue-500"
 					placeholder="Search influencers ..."
 					required
@@ -212,7 +183,7 @@ const Autocomplete = () => {
 					value={autocomplete.userInput}
 				/>
 				<button
-					className="text-white absolute right-2.5 bottom-2.5 top-2.5
+					className="text-white absolute right-0.5 bottom-0.5 top-0.5 max-md:hidden
 					bg-primary-500 hover:bg-primary-600 focus:ring-4 
 					focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2"
 				>
@@ -282,4 +253,4 @@ const Autocomplete = () => {
 	);
 };
 
-export default Autocomplete;
+export default AutocompleteSmall;

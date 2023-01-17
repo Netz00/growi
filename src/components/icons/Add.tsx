@@ -1,5 +1,6 @@
 const Add = () => (
 	<svg
+		className="inline-block"
 		width="41"
 		height="25"
 		viewBox="0 0 41 25"

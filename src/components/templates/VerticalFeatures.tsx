@@ -8,7 +8,7 @@ type IVerticalFeaturesProps = {
 };
 
 const VerticalFeatures = (props: IVerticalFeaturesProps) => (
-	<Section title={props.title} description={props.description}>
+	<Section title={props.title} description={props.description} xPadding="">
 		{props.features.map((feature: any) => (
 			<VerticalFeatureRow {...feature} key={feature.key} />
 		))}

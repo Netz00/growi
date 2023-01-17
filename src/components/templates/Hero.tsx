@@ -15,7 +15,7 @@ type IHeroProps = {
 
 const Hero = (props: IHeroProps) => (
 	<Background color="bg-gray-100">
-		<Section yPadding="py-6" xPadding="">
+		<Section yPadding="py-6" xPadding="px-0">
 			<CagaljsNavbarItems logo={<Logo xl />}>
 				{props.navBarItems}
 			</CagaljsNavbarItems>

@@ -2,6 +2,12 @@
 
 Growi - Influencer marketing platform - frontend part
 
+### Built with
+- [Next.js for Static Site Generator](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [fusejs - fuzzy-search library](https://fusejs.io/)
+
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and spiced with configuration and boilerplate by [`creativedesignsguru`](https://creativedesignsguru.com).

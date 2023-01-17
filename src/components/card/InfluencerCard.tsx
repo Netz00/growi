@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import useComponentVisible from '../../hooks/useComponentVisible';
@@ -18,8 +19,8 @@ type IInfluencerCardProps = {
 	profileImageAlt: string;
 	media: [IMediaProps];
 	location: ILocationProps;
-	followersNumber: number;
-	engagmentRatioPercentage: number;
+	follower: number;
+	engagmentRatioRatePercentage: number;
 	rating: number;
 	reviewsNumber: number;
 	tags: [string];
@@ -46,14 +47,17 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 				<CardCarousel media={[...props.media]} />
 				<div className="flex flex-col gap-4 px-5">
 					<div className="flex flex-row justify-between">
-						<a className="flex flex-row gap-2 items-center">
+						<Link
+							href={`${router.basePath}/creators/${props.username}`}
+							className="flex flex-row gap-2 items-center"
+						>
 							<div
 								className="w-16 h-16 max-md:w-10 max-md:h-10 relative rounded-full
 				                            overflow-hidden"
 							>
 								<Image
 									src={`${router.basePath}${props.profileImage}`}
-									alt={props.profileImageAlt}
+									alt={props.username}
 									fill
 									style={{
 										objectFit: 'cover',
@@ -72,7 +76,7 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 									{props.firstName} {props.lastName}
 								</p>
 							</span>
-						</a>
+						</Link>
 						<Location {...props.location} />
 					</div>
 					<ProfileStats {...props} />

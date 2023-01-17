@@ -1,5 +1,5 @@
 type ILocationProps = {
-	country: number;
+	country: string;
 	city: string;
 };
 
