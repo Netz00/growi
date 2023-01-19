@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import currencyFormatter from '../../hooks/currencyFormatter';
 import useComponentVisible from '../../hooks/useComponentVisible';
 import { Add } from '../icons/Add';
 import { Clickable } from '../icons/Clickable';
@@ -42,57 +43,63 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 			<div
 				className={`${
 					isSavePopupVisible && 'brightness-50'
-				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col gap-4`}
+				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col`}
 			>
-				<CardCarousel media={[...props.media]} />
-				<div className="flex flex-col gap-4 px-5">
-					<div className="flex flex-row justify-between">
-						<Link
-							href={`${router.basePath}/creators/${props.username}`}
-							className="flex flex-row gap-2 items-center"
-						>
-							<div
-								className="w-16 h-16 max-md:w-10 max-md:h-10 relative rounded-full
+				<div className="h-56 md:h-72">
+					<CardCarousel media={[...props.media]} />
+				</div>
+
+				<Link
+					href={`${router.basePath}/creators/${props.username}`}
+					className="hover:bg-slate-100"
+				>
+					<div className="flex flex-col gap-4 p-5">
+						<div className="flex flex-row justify-between">
+							<div className="flex flex-row gap-2 items-center">
+								<div
+									className="w-16 h-16 max-md:w-10 max-md:h-10 relative rounded-full
 				                            overflow-hidden"
-							>
-								<Image
-									src={`${router.basePath}${props.profileImage}`}
-									alt={props.username}
-									fill
-									style={{
-										objectFit: 'cover',
-										position: 'absolute',
-									}}
-									sizes="(max-width: 113px) 15vw,
+								>
+									<Image
+										src={`${router.basePath}${props.profileImage}`}
+										alt={props.username}
+										fill
+										style={{
+											objectFit: 'cover',
+											position: 'absolute',
+										}}
+										sizes="(max-width: 113px) 15vw,
                                             (max-width: 200px) 8vw,
                                             5vw"
-								/>
+									/>
+								</div>
+								<span>
+									<p className="text-slate-600 font-semibold">
+										@{props.username}{' '}
+									</p>
+									<p>
+										{props.firstName} {props.lastName}
+									</p>
+								</span>
 							</div>
-							<span>
-								<p className="text-slate-600 font-semibold">
-									@{props.username}{' '}
-								</p>
-								<p>
-									{props.firstName} {props.lastName}
-								</p>
-							</span>
-						</Link>
-						<Location {...props.location} />
-					</div>
-					<ProfileStats {...props} />
-					<p
-						className="font-semibold tracking-tight text-gray-700
+							<Location {...props.location} />
+						</div>
+						<ProfileStats {...props} />
+						<p
+							className="font-semibold tracking-tight
                                    overflow-hidden text-ellipsis h-6 whitespace-pre-line"
-					>
-						{props.tags.map((tag) => `#${tag} `)}
-					</p>
-					<Rating {...props} />
-				</div>
+						>
+							{props.tags.map((tag) => `#${tag} `)}
+						</p>
+						<Rating {...props} />
+					</div>
+				</Link>
+
 				<div className="px-5 py-1 border-solid border-t border-gray-400 flex items-center justify-between">
 					<div className="text-left">
 						<p className="text-xs leading-3">Starting at</p>
 						<p className="text-2xl font-bold text-gray-900">
-							{`$${Math.round(props.startingPrice)}`}
+							{`${currencyFormatter(Math.round(props.startingPrice))}`}
 						</p>
 					</div>
 

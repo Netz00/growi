@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import ReactPlayer from 'react-player';
 
 type IMediaProps = {
@@ -18,7 +17,6 @@ type ICardCarouselProps = {
 
 const CardCarousel = (props: ICardCarouselProps) => {
 	const [activeMedia, setActiveMedia] = useState(0);
-	const router = useRouter();
 	const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
 	const [hasWindow, setHasWindow] = useState(false);
@@ -29,26 +27,30 @@ const CardCarousel = (props: ICardCarouselProps) => {
 	}, []);
 
 	return (
-		<div id="default-carousel" className="relative" data-carousel="static">
+		<div
+			id="default-carousel"
+			className="relative h-full"
+			data-carousel="static"
+		>
 			{/* <!-- Carousel wrapper --> */}
-			<div className="overflow-hidden rounded-lg rounded-b-none">
+			<div className="overflow-hidden rounded-lg rounded-b-none h-full">
 				{props.media?.map((element, index) => (
 					<div
 						key={element.key}
 						className={`{ ${
 							activeMedia !== index && 'hidden'
-						} duration-700 ease-in-out z-0 relative h-56 md:h-72`}
+						} duration-700 ease-in-out z-0 relative h-full`}
 						data-carousel-item
 					>
 						{validImageTypes.includes(element.type) ? (
 							<Image
 								key={element.key}
-								src={`${router.basePath}${element.url}`}
+								src={`${element.url}`}
 								alt={element.alt}
 								fill
 								style={{ objectFit: 'cover', position: 'absolute' }}
 								sizes="(max-width: 768px) 100vw,
-                                (max-width: 1200px) 50vw,
+                                (max-width: 1024px) 50vw,
                                 33vw"
 								priority={activeMedia === index}
 							/>
@@ -59,7 +61,7 @@ const CardCarousel = (props: ICardCarouselProps) => {
 									playing={activeMedia === index}
 									width="100%"
 									height="100%"
-									url={`../${element.url}`}
+									url={`${element.url}`}
 									className="bg-gradient-to-b from-white via-black to-white"
 									config={{
 										file: {

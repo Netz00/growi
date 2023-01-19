@@ -28,7 +28,7 @@ export default function useSearch(props: any) {
 		)
 			return [];
 
-		const result = fuse.search(`^${query}`, { limit: 5 }); // starts with
+		const result = fuse.search(`^${query}`, { limit: 8 }); // starts with
 
 		return result;
 	}

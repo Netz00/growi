@@ -211,8 +211,8 @@ const Creators = () => (
 						.cls-14,
 						.cls-16,
 						.cls-8 {
-							stroke-linecap: round;
-							stroke-linejoin: round;
+							strokelinecap: round;
+							strokelinejoin: round;
 						}
 						.cls-1,
 						.cls-10,
@@ -231,7 +231,7 @@ const Creators = () => (
 						.cls-7,
 						.cls-8,
 						.cls-9 {
-							stroke-width: 3px;
+							strokewidth: 3px;
 						}
 						.cls-2 {
 							fill: #020202;

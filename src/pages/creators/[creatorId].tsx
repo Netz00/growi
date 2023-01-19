@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import { useState, useEffect } from 'react';
+
 import {
 	Chart as ChartJS,
 	LinearScale,
@@ -14,6 +16,7 @@ import {
 	BarElement,
 	ChartOptions,
 	RadialLinearScale,
+	ChartData,
 } from 'chart.js';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,10 +26,11 @@ import { InstagramEmbed } from 'react-social-media-embed';
 
 import { Background } from '../../components/background/Background';
 import { Button } from '../../components/button/Button';
+import { CardCarousel } from '../../components/card/CardCarousel';
 import { Add } from '../../components/icons/Add';
 import { Clickable } from '../../components/icons/Clickable';
-import { Export } from '../../components/icons/Export';
 import { Message } from '../../components/icons/Message';
+import { Share } from '../../components/icons/Share';
 import AutocompleteSmall from '../../components/input/AutocompleteSmall';
 import { Meta } from '../../components/layout/Meta';
 import { Section } from '../../components/layout/Section';
@@ -34,6 +38,7 @@ import { CagaljsNavbarItems } from '../../components/navigation/CagaljsNavbarIte
 import { Footer } from '../../components/templates/Footer';
 import { Logo } from '../../components/templates/Logo';
 import abbreviateNumber from '../../hooks/abbreviateNumber';
+import currencyFormatter from '../../hooks/currencyFormatter';
 import { AppConfig } from '../../utils/AppConfig';
 
 ChartJS.register(
@@ -49,6 +54,10 @@ ChartJS.register(
 	BarElement,
 	RadialLinearScale
 );
+ChartJS.defaults.font.family = 'system-ui';
+ChartJS.defaults.font.weight = '300';
+ChartJS.defaults.plugins.legend.labels.color = '#555';
+
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
 	const data = fs.readFileSync('public/assets/data/creatorProfiles.json');
@@ -88,54 +97,16 @@ export async function getStaticProps(context: any) {
 }
 const Influencer = (props: any) => {
 	const router = useRouter();
-	// Pie
-	const followerGenderSplit = {
-		backgroundColor: ['#3333', '#1633', '#3193'],
-		labels: [
-			...Object.getOwnPropertyNames(
-				props.influencerDetails.followerGenderSplit
-			),
-		],
-		datasets: [
-			{
-				label: 'Sex split',
-				data: [
-					...Object.entries(
-						props.influencerDetails.followerGenderSplit
-					).map(([, value]) => value),
-				],
-				backgroundColor: ['#3333', '#1633', '#3193'],
-				hoverOffset: 4,
-			},
-		],
-	};
 
-	const optionsPie = {
-		responsive: true,
-		maintainAspectRatio: false,
+	const [hasWindow, setHasWindow] = useState(false);
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			setHasWindow(true);
+		}
+	}, []);
 
-		plugins: {
-			legend: {
-				position: 'top',
-				align: 'start',
-				labels: {
-					usePointStyle: true,
-					pointStyle: 'circle',
-				},
-				title: {
-					text: 'Distribution in % of audience by sex',
-					display: true,
-					color: '#000',
-					font: { size: 16 },
-					position: 'start',
-				},
-			},
-		},
-		elements: { arc: { borderWidth: 3 } },
-		cutout: 30,
-	};
 	// Bar graph
-	const monthlyStats = {
+	const monthlyStats: ChartData = {
 		labels: [...props.influencerDetails.monthlyStats.map((el: any) => el.month)],
 		datasets: [
 			{
@@ -148,8 +119,7 @@ const Influencer = (props: any) => {
 						(el: any) => el.followerNumber
 					),
 				],
-				backgroundColor: ['#3333'],
-				barThickeness: 10,
+				backgroundColor: ['#31C0A9'],
 			},
 			{
 				label: 'Engagment ratio',
@@ -160,8 +130,7 @@ const Influencer = (props: any) => {
 						(el: any) => el.engagment
 					),
 				],
-				backgroundColor: ['#3193'],
-				barThickeness: 10,
+				backgroundColor: ['#CB5150'],
 			},
 		],
 	};
@@ -169,10 +138,6 @@ const Influencer = (props: any) => {
 	const optionsBar: ChartOptions = {
 		responsive: true,
 		maintainAspectRatio: false,
-
-		layout: {
-			padding: 20,
-		},
 		plugins: {
 			legend: {
 				position: 'top',
@@ -180,17 +145,26 @@ const Influencer = (props: any) => {
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
+					padding: 12,
+					font: { size: 14 },
 				},
 				title: {
-					text: 'Followers and engagment ratio report',
+					text: 'Followers and engagment',
 					display: true,
-					color: '#000',
+					color: '#555',
 					font: { size: 16 },
 					position: 'start',
 				},
 			},
 		},
 		scales: {
+			x: {
+				ticks: {
+					font: {
+						size: 14,
+					},
+				},
+			},
 			followers: {
 				type: 'linear' as any,
 				display: true,
@@ -208,6 +182,10 @@ const Influencer = (props: any) => {
 					backdropPadding: {
 						top: 20,
 					},
+					font: {
+						size: 14,
+						lineHeight: 2,
+					},
 				},
 			},
 			engagment: {
@@ -217,6 +195,9 @@ const Influencer = (props: any) => {
 				ticks: {
 					callback(value: number | string): string {
 						return `${value}%`;
+					},
+					font: {
+						size: 14,
 					},
 				},
 			},
@@ -229,19 +210,10 @@ const Influencer = (props: any) => {
 			(year: any) => ({
 				label: year.year,
 				fill: true,
-				backgroundColor:
-					year.year % 2 === 0
-						? 'rgba(179,181,198,0.2)'
-						: 'rgba(255,99,132,0.2)',
-				borderColor:
-					year.year % 2 === 0
-						? 'rgba(179,181,198,1)'
-						: 'rgba(255,99,132,1)',
+				backgroundColor: year.year % 2 === 0 ? '#CB51503b' : '#31c0a936',
+				borderColor: year.year % 2 === 0 ? '#d97684d9' : '#31c0a9ba',
 				pointBorderColor: '#fff',
-				pointBackgroundColor:
-					year.year % 2 === 0
-						? 'rgba(179,181,198,1)'
-						: 'rgba(255, 99, 132, 1)',
+				pointBackgroundColor: year.year % 2 === 0 ? '#CB5150' : '#31C0A9',
 				data: year.distribution,
 			})
 		),
@@ -256,20 +228,70 @@ const Influencer = (props: any) => {
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
+					font: { size: 14 },
 				},
 				title: {
-					text: 'Distribution in % of influencer audience',
+					text: 'Followers cities distribution',
 					display: true,
-					color: '#000',
+					color: '#555',
 					font: { size: 16 },
 					position: 'start',
 				},
 			},
 		},
 	};
+
+	// Pie
+	const followerGenderSplit = {
+		backgroundColor: ['#31C0A9', '#cbd5e0', '#CB5150'],
+		labels: [
+			...Object.getOwnPropertyNames(
+				props.influencerDetails.followerGenderSplit
+			),
+		],
+		datasets: [
+			{
+				label: 'Sex split',
+				data: [
+					...Object.entries(
+						props.influencerDetails.followerGenderSplit
+					).map(([, value]) => value),
+				],
+				backgroundColor: ['#31C0A9', '#cbd5e0', '#CB5150'],
+				hoverOffset: 4,
+			},
+		],
+	};
+
+	const optionsPie = {
+		responsive: true,
+		maintainAspectRatio: false,
+
+		plugins: {
+			legend: {
+				position: 'left',
+				align: 'start',
+				labels: {
+					usePointStyle: true,
+					pointStyle: 'circle',
+					font: { size: 14 },
+				},
+				title: {
+					text: ['Followers'],
+					display: true,
+					color: '#555',
+					font: { size: 16 },
+					position: 'start',
+				},
+			},
+		},
+		elements: { arc: { borderWidth: 3 } },
+		cutout: 30,
+	};
+
 	// Pie
 	const followerRealSplit = {
-		backgroundColor: ['#1633', '#3193'],
+		backgroundColor: ['#31C0A9', '#CB5150'],
 		labels: [
 			...Object.getOwnPropertyNames(props.influencerDetails.followerRealSplit),
 		],
@@ -281,7 +303,7 @@ const Influencer = (props: any) => {
 						([, value]) => value
 					),
 				],
-				backgroundColor: ['#1633', '#3193'],
+				backgroundColor: ['#31C0A9', '#CB5150'],
 				hoverOffset: 4,
 			},
 		],
@@ -293,16 +315,17 @@ const Influencer = (props: any) => {
 
 		plugins: {
 			legend: {
-				position: 'top',
+				position: 'left',
 				align: 'start',
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
+					font: { size: 14 },
 				},
 				title: {
-					text: 'Distribution of audience by fake followers',
+					text: ['Followers'],
 					display: true,
-					color: '#000',
+					color: '#555',
 					font: { size: 16 },
 					position: 'start',
 				},
@@ -343,109 +366,120 @@ const Influencer = (props: any) => {
 				</Section>
 			</Background>
 
-			<Section yPadding="pt-10 pb-6" textBottomMargin="mb-10">
-				<div className="flex flex-wrap justify-between">
-					<a className="m-2">
+			<div className="max-w-screen-lg mx-auto">
+				<div className="mb-4 flex justify-end gap-4 m-2">
+					<span className="bg-slate-50 p-2 rounded-lg">
+						<Clickable scale hover>
+							<Add />
+							<span className="pl-2">Save</span>
+						</Clickable>
+					</span>
+
+					<span className="bg-slate-50 p-2 rounded-lg">
+						<Clickable scale hover>
+							<Share />
+
+							<span className="pl-2">Share</span>
+						</Clickable>
+					</span>
+				</div>
+				<div className="w-full h-64 md:h-96">
+					<CardCarousel {...props.influencerDetails} />
+				</div>
+			</div>
+
+			<Section yPadding="pt-4 pb-6" textBottomMargin="mb-10">
+				<div className="flex flex-wrap md:gap-10 gap-6 justify-between">
+					<div className="flex md:gap-10 gap-8 max-md:items-center">
 						<div
-							className="w-56 h-56 max-md:w-36 max-md:h-36 relative rounded-full
+							className="w-52 h-52 max-md:w-36 max-md:h-36 relative rounded-full
 				                            overflow-hidden"
 						>
 							<Image
 								src={`${router.basePath}${props.influencerDetails.profileImage}`}
-								alt={props.influencerDetails.profileImageAlt}
+								alt={props.influencerDetails.username}
 								fill
 								style={{
 									objectFit: 'cover',
 									position: 'absolute',
 								}}
-								sizes="(max-width: 113px) 30vw,
-                                            (max-width: 200px) 16vw,
-                                            10vw"
+								sizes="(max-width: 208px) 40vw,
+                                        (max-width: 144px) 30vw"
 							/>
 						</div>
-					</a>
-					<span className="my-2">
-						<p className="text-slate-600 font-semibold text-2xl">
-							@{props.influencerDetails.username}{' '}
-						</p>
-						<p>
-							{props.influencerDetails.firstName}{' '}
-							{props.influencerDetails.lastName}
-						</p>
-						<div className="text-left py-6">
+
+						<span>
+							<p className="text-slate-600 font-semibold text-2xl">
+								@{props.influencerDetails.username}{' '}
+							</p>
+							<p>
+								{props.influencerDetails.firstName}{' '}
+								{props.influencerDetails.lastName}
+							</p>
+
+							<div className="pb-4">
+								MARCH 😍 <br></br>Born in 🇻🇪🇻🇪🇻🇪 <br></br>{' '}
+								youtu.be/sQ0uu8jYceQ
+							</div>
+							<Button>
+								<Message />
+								<span className="pl-2">Message</span>
+							</Button>
+						</span>
+					</div>
+					<div className="max-md:flex-1 flex flex-col gap-4 justify-between">
+						<div className="text-center md:text-right">
 							<p className="text-xs leading-3">Starting at</p>
-							<p className="text-2xl font-bold text-gray-900">
-								{`$${Math.round(
-									props.influencerDetails.startingPrice
+							<p className="text-5xl font-bold text-gray-900">
+								{`${currencyFormatter(
+									Math.round(props.influencerDetails.startingPrice)
 								)}`}
 							</p>
 						</div>
-						<Button>
-							<Message />
-							<span className="pl-2">Message</span>
-						</Button>
-					</span>
+						<div className="flex gap-5 flex-1 justify-evenly items-center bg-brands-primary-200 p-2 px-8 rounded-lg">
+							<div className="text-center">
+								<p className="text-slate-50 text-2xl font-medium">
+									{abbreviateNumber(
+										props.influencerDetails.follower
+									)}
+								</p>
+								<p className="text-slate-100 text-xs">Followers</p>
+							</div>
 
-					<div className="flex flex-col justify-evenly bg-brands-primary-200 p-2 px-8 rounded-lg my-2">
-						<div className="text-center">
-							<p className="text-slate-50 text-2xl font-medium">
-								{abbreviateNumber(props.influencerDetails.follower)}
-							</p>
-							<p className="text-slate-100 text-xs">Followers</p>
-						</div>
+							<div className="text-center">
+								<p className="text-slate-100 text-3xl font-medium">
+									{
+										props.influencerDetails
+											.engagmentRatioRatePercentage
+									}
+									%
+								</p>
+								<p className="text-slate-200 text-xs">
+									Engagment ratio
+								</p>
+							</div>
 
-						<div className="text-center">
-							<p className="text-slate-100 text-2xl font-medium">
-								{
-									props.influencerDetails
-										.engagmentRatioRatePercentage
-								}
-								%
-							</p>
-							<p className="text-slate-200 text-xs">Engagment ratio</p>
-						</div>
-
-						<div className="text-center">
-							<p className="text-slate-50 text-2xl font-medium">
-								{abbreviateNumber(
-									props.influencerDetails.postNumber
-								)}
-							</p>
-							<p className="text-slate-100 text-xs">Followers</p>
+							<div className="text-center">
+								<p className="text-slate-50 text-2xl font-medium">
+									{abbreviateNumber(
+										props.influencerDetails.postNumber
+									)}
+								</p>
+								<p className="text-slate-100 text-xs">Posts</p>
+							</div>
 						</div>
 					</div>
-
-					<span className="rounded-lg my-2">
-						<div className="bg-slate-50 p-2 rounded-lg mb-5">
-							<Clickable scale hover>
-								<Add />
-								<span className="pl-2">Save</span>
-							</Clickable>
-						</div>
-
-						<div className="bg-slate-50 p-2 rounded-lg">
-							<Clickable scale hover>
-								<Export />
-
-								<span>Export PDF</span>
-							</Clickable>
-						</div>
-					</span>
 				</div>
 			</Section>
 
-			<Section description="Bio" yPadding="pt-6 pb-6" textBottomMargin="mb-10">
-				{props.influencerDetails.description}
-			</Section>
-
-			<Section
-				description="Audience"
-				yPadding="pt-6 pb-6"
-				textBottomMargin="mb-10"
-			>
-				<div className="bg-slate-50 rounded-lg">
-					<div className="w-full h-72">
-						<Bar data={monthlyStats} options={optionsBar as any} />
+			<Section description="" yPadding="pt-6 pb-6" textBottomMargin="mb-10">
+				<div className="text-3xl pb-4">Audience</div>
+				<div className="bg-slate-50 rounded-lg p-5">
+					<div className="w-full h-80">
+						<Bar
+							data={monthlyStats as any}
+							options={optionsBar as any}
+						/>
 					</div>
 					<div className="flex flex-wrap justify-between">
 						<div className="relative md:w-1/2 w-full">
@@ -473,22 +507,20 @@ const Influencer = (props: any) => {
 				</div>
 			</Section>
 
-			<Section
-				description="Featured posts"
-				yPadding="pt-6 pb-6"
-				textBottomMargin="mb-10"
-			>
+			<Section yPadding="pt-6 pb-6" textBottomMargin="mb-10">
+				<div className="text-3xl pb-4">Featured posts</div>
 				<div className="flex flex-wrap justify-around">
-					{props.influencerDetails.postLast.map(
-						(postUrl: string, key: number) => (
-							<InstagramEmbed
-								key={props.influencerDetails.username + key}
-								url={postUrl}
-								width="fit"
-								captioned
-							/>
-						)
-					)}
+					{hasWindow &&
+						props.influencerDetails.postLast.map(
+							(postUrl: string, key: number) => (
+								<InstagramEmbed
+									key={props.influencerDetails.username + key}
+									url={postUrl}
+									width="fit"
+									captioned
+								/>
+							)
+						)}
 				</div>
 				<Link
 					className="m-auto block w-fit my-10"

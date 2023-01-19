@@ -36,12 +36,12 @@ const Brands = (props: any) => (
 				</>
 			}
 			title={
-				<>
+				<div className="leading-hero">
 					{props.hero.title.part1}
 					<span className="text-primary-500">
 						{props.hero.title.part2}
 					</span>
-				</>
+				</div>
 			}
 			description={props.hero.description}
 			buttons={

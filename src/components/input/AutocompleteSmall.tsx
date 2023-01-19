@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
+import { scrollTo } from '../../hooks/scrollTo';
 import useSearch from '../../hooks/useSearch';
 
 type Suggestion = {
@@ -98,14 +99,17 @@ const AutocompleteSmall = () => {
 		);
 	};
 
+	const onSubmit = (term: string) =>
+		router.push(`/creators/${encodeURIComponent(term)}`);
+
 	const onClick = (e: any) => {
 		setAutocomplete({
+			...autocomplete,
 			activeSuggestion: 0,
-			filteredSuggestions: [],
 			showSuggestions: false,
-			userInput: e.currentTarget.id,
+			userInput: e.currentTarget.getAttribute('data-username'),
 		});
-		router.push(`/creators/${encodeURIComponent(e.currentTarget.id)}`);
+		onSubmit(e.currentTarget.getAttribute('data-username'));
 	};
 
 	const setOpen = (open: boolean) => {
@@ -126,6 +130,8 @@ const AutocompleteSmall = () => {
 				showSuggestions: false,
 				userInput: filteredSuggestions[activeSuggestion]?.username ?? '',
 			});
+			if (filteredSuggestions[activeSuggestion]?.username !== '')
+				onSubmit(filteredSuggestions[activeSuggestion]?.username ?? '');
 		}
 		// User pressed the up arrow
 		else if (e.keyCode === 38) {
@@ -136,16 +142,43 @@ const AutocompleteSmall = () => {
 				...autocomplete,
 				activeSuggestion: autocomplete.activeSuggestion - 1,
 			});
+
+			const elem = document.getElementById(
+				`suggestion-${autocomplete.activeSuggestion - 1}`
+			);
+
+			const topPos = elem?.offsetTop;
+
+			if (topPos)
+				scrollTo(
+					document.getElementById('suggestion-list')!,
+					topPos - 60,
+					300
+				);
 		}
 		// User pressed the down arrow
 		else if (e.keyCode === 40) {
 			if (activeSuggestion - 1 === filteredSuggestions.length) {
 				return;
 			}
+
 			setAutocomplete({
 				...autocomplete,
 				activeSuggestion: autocomplete.activeSuggestion + 1,
 			});
+
+			const elem = document.getElementById(
+				`suggestion-${autocomplete.activeSuggestion + 1}`
+			);
+
+			const topPos = elem?.offsetTop;
+
+			if (topPos)
+				scrollTo(
+					document.getElementById('suggestion-list')!,
+					topPos - 30,
+					300
+				);
 		}
 	};
 
@@ -172,8 +205,9 @@ const AutocompleteSmall = () => {
 				<input
 					type="search"
 					className="block w-full p-2 pl-10 pr-4 md:pr-24  text-gray-900 
-                    border border-gray-300 rounded-lg bg-gray-50 focus:outline-blue-500"
-					placeholder="Search influencers ..."
+                    border border-gray-300 rounded-lg bg-gray-50 focus:border-blue-500 focus:border-2 outline-none
+                    placeholder-slate-400 placeholder-shown:text-ellipsis"
+					placeholder="Search influencers by username, fist name, last name, tags"
 					required
 					maxLength={40}
 					onChange={onChange}
@@ -183,9 +217,10 @@ const AutocompleteSmall = () => {
 					value={autocomplete.userInput}
 				/>
 				<button
-					className="text-white absolute right-0.5 bottom-0.5 top-0.5 max-md:hidden
+					className="text-white absolute right-0 bottom-0 top-0 max-md:hidden
 					bg-primary-500 hover:bg-primary-600 focus:ring-4 
-					focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2"
+					focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg px-4 py-2"
+					onClick={() => onSubmit(autocomplete.userInput)}
 				>
 					Search
 				</button>
@@ -198,6 +233,7 @@ const AutocompleteSmall = () => {
                     border-solid border border-slate-300 border-t-0 bg-white
                     list-none max-h-48 overflow-y-auto custom_scrollbar pl-0 cursor-pointer"
 						onMouseDown={(e) => e.preventDefault()}
+						id="suggestion-list"
 					>
 						{autocomplete.filteredSuggestions.map(
 							(suggestion, index) => (
@@ -209,7 +245,8 @@ const AutocompleteSmall = () => {
                                     p-1 px-4 hover:bg-slate-200 flex gap-2 items-center first:rounded-tl-lg last:rounded-bl-lg`}
 									key={suggestion.username}
 									onClick={onClick}
-									id={suggestion.username}
+									id={`suggestion-${index}`}
+									data-username={suggestion.username}
 								>
 									<span className="text-slate-600 font-semibold px-1 w-28">
 										@{getMatchParts(suggestion.username)}
@@ -228,7 +265,7 @@ const AutocompleteSmall = () => {
 										>
 											<Image
 												src={`${router.basePath}${suggestion.profileImage}`}
-												alt={suggestion.profileImageAlt}
+												alt={suggestion.username}
 												fill
 												style={{
 													objectFit: 'cover',
@@ -245,7 +282,7 @@ const AutocompleteSmall = () => {
 						)}
 					</ul>
 				) : (
-					<div className="absolute text-slate-300 p-2">
+					<div className="absolute text-sm text-slate-300">
 						<em>No suggestions, you&apos;re on your own!</em>
 					</div>
 				))}
