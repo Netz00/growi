@@ -37,6 +37,7 @@ import { Section } from '../../components/layout/Section';
 import { CagaljsNavbarItems } from '../../components/navigation/CagaljsNavbarItems';
 import { Footer } from '../../components/templates/Footer';
 import { Logo } from '../../components/templates/Logo';
+import ThemeSwitch from '../../components/templates/ThemeSwitch';
 import abbreviateNumber from '../../hooks/abbreviateNumber';
 import currencyFormatter from '../../hooks/currencyFormatter';
 import { AppConfig } from '../../utils/AppConfig';
@@ -347,6 +348,7 @@ const Influencer = (props: any) => {
 					<CagaljsNavbarItems
 						logo={<Logo xl hideText />}
 						search={<AutocompleteSmall />}
+						themeSwitch={<ThemeSwitch />}
 					>
 						{props.navBarLinks?.map((item: any) =>
 							item.active ? (

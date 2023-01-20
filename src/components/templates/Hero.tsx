@@ -5,6 +5,7 @@ import { HeroContent } from '../hero/HeroContent';
 import { Section } from '../layout/Section';
 import { CagaljsNavbarItems } from '../navigation/CagaljsNavbarItems';
 import { Logo } from './Logo';
+import ThemeSwitch from './ThemeSwitch';
 
 type IHeroProps = {
 	navBarItems: ReactNode;
@@ -14,9 +15,9 @@ type IHeroProps = {
 };
 
 const Hero = (props: IHeroProps) => (
-	<Background color="bg-gray-100">
+	<Background color="bg-gray-100 dark:bg-darkMode-primary-dark">
 		<Section yPadding="py-6" xPadding="px-0">
-			<CagaljsNavbarItems logo={<Logo xl />}>
+			<CagaljsNavbarItems logo={<Logo xl />} themeSwitch={<ThemeSwitch />}>
 				{props.navBarItems}
 			</CagaljsNavbarItems>
 		</Section>

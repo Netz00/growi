@@ -20,14 +20,14 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
 		<div
 			className={`mt-10 md:mt-5 flex flex-wrap items-center
             ${props.reverse && 'flex-row-reverse'}
-            odd:bg-gray-100 p-3
+            odd:bg-gray-100 p-3 dark:odd:bg-darkMode-primary-dark
             `}
 		>
 			<div className="w-full sm:w-1/2">
-				<h3 className="text-3xl text-gray-900 px-8 text-center font-semibold">
+				<h3 className="text-3xl text-gray-900 px-8 text-center font-semibold dark:text-gray-400">
 					{props.title}
 				</h3>
-				<div className="mt-2 text-xl px-8 leading-9">
+				<div className="mt-2 text-xl px-8 leading-9 dark:text-gray-500">
 					{props.description}
 				</div>
 				{props.CTA && (

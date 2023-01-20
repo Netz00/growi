@@ -11,7 +11,7 @@ import { VerticalFeatures } from '../components/templates/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 
 const Index = (props: any) => (
-	<div className="antialiased text-gray-600">
+	<div className="antialiased text-gray-600 dark:bg-darkMode-primary-light">
 		<Meta
 			title={props.siteTitle ?? AppConfig.title}
 			description={props.siteDescription ?? AppConfig.description}
@@ -38,7 +38,7 @@ const Index = (props: any) => (
 			title={
 				<>
 					{props.hero.title.part1}
-					<span className="text-primary-500">
+					<span className="text-primary-500 dark:text-darkMode-secondary-light">
 						{props.hero.title.part2}
 					</span>
 				</>
@@ -49,7 +49,7 @@ const Index = (props: any) => (
 					<Link href={props.hero.button_1.link}>
 						<Button
 							xl
-							color="bg-brands-primary-300 hover:bg-brands-primary-400"
+							color="bg-brands-primary-300 hover:bg-brands-primary-400 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200"
 						>
 							{props.hero.button_1.text}
 						</Button>
@@ -57,7 +57,7 @@ const Index = (props: any) => (
 					<Link href={props.hero.button_2.link}>
 						<Button
 							xl
-							color="bg-creators-primary-100 hover:bg-creators-primary-200"
+							color="bg-creators-primary-100 hover:bg-creators-primary-200 dark:bg-darkMode-cta2-100 dark:hover:bg-darkMode-cta2-200"
 						>
 							{props.hero.button_2.text}
 						</Button>

@@ -16,7 +16,8 @@ const Button = (props: IButtonProps) => {
 					: 'text-lg font-semibold py-2 px-4'
 			}
                     text-white ${
-						props.color ?? 'bg-primary-500 hover:bg-primary-600'
+						props.color ??
+						'bg-primary-500 hover:bg-primary-600 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200'
 					}`}
 		>
 			{props.children}

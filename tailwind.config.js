@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	prefix: '',
+	darkMode: 'class',
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
 		fontSize: {
@@ -26,6 +28,22 @@ module.exports = {
 					700: '#007988',
 					800: '#206073',
 					900: '#2F4858',
+				},
+				darkMode: {
+					primary: { dark: '#191A19', light: '#344230' },
+					secondary: {
+						dark: '#1E5128',
+						default: '#4E9F3D',
+						light: '#D8E9A8',
+					},
+					cta1: {
+						100: '#3B7B68',
+						200: '#2D716B',
+					},
+					cta2: {
+						100: '#B73A24',
+						200: '#AD2E53',
+					},
 				},
 				gray: {
 					100: '#f7fafc',
@@ -61,10 +79,10 @@ module.exports = {
 				},
 			},
 			lineHeight: {
-				hero: '4.5rem',
+				hero: '4rem',
 			},
 			fontFamily: {
-				bellota: ['Bellota', 'sans-cursive'],
+				bellota: ['"Bellota"', 'cursive'],
 			},
 			backgroundImage: () => ({
 				'gradient-instagram':
