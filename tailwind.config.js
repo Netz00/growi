@@ -70,7 +70,7 @@ module.exports = {
 				creators: {
 					primary: {
 						100: '#EB7F57',
-						200: '#D76777',
+						200: '#CA632E',
 						300: '#AC5F8C',
 						400: '#765C8C',
 						500: '#475578',

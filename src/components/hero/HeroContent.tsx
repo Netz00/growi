@@ -7,11 +7,11 @@ type IHeroOneButtonProps = {
 };
 
 const HeroContent = (props: IHeroOneButtonProps) => (
-	<header className="text-center">
-		<h1 className="text-5xl text-gray-900 font-bold whitespace-pre-line leading-hero dark:text-darkMode-secondary-dark">
+	<header className="max-md:text-center md:pl-5">
+		<h1 className="text-5xl max-md:text-4xl text-gray-900 font-bold whitespace-pre-line leading-hero dark:text-darkMode-secondary-dark">
 			{props.title}
 		</h1>
-		<div className="text-2xl m-8 md:mb-16">{props.description}</div>
+		<div className="text-2xl m-8 md:ml-0 md:mb-16">{props.description}</div>
 		<div className="inline-flex flex-wrap justify-center gap-6">
 			{props.buttons}
 		</div>

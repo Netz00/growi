@@ -1,7 +1,7 @@
 import { createContext, ReactElement, useEffect, useState } from 'react';
 
 const ThemeContext = createContext({
-	isDarkTheme: true,
+	isDarkTheme: false,
 	toggleThemeHandler: () => {},
 });
 
@@ -10,7 +10,7 @@ interface ThemePropsInterface {
 }
 
 export function ThemeContextProvider(props: ThemePropsInterface): ReactElement {
-	const [isDarkTheme, setIsDarkTheme] = useState(true);
+	const [isDarkTheme, setIsDarkTheme] = useState(false);
 
 	function isLocalStorageEmpty(): boolean {
 		return !localStorage.getItem('isDarkTheme');
