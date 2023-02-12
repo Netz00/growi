@@ -31,7 +31,8 @@ import { Add } from '../../components/icons/Add';
 import { Clickable } from '../../components/icons/Clickable';
 import { Message } from '../../components/icons/Message';
 import { Share } from '../../components/icons/Share';
-import AutocompleteSmall from '../../components/input/AutocompleteSmall';
+import AutocompleteImpl from '../../components/input/search/AutocompleteImpl';
+import SearchSmall from '../../components/input/search/SearchSmall';
 import { Meta } from '../../components/layout/Meta';
 import { Section } from '../../components/layout/Section';
 import { CagaljsNavbarItems } from '../../components/navigation/CagaljsNavbarItems';
@@ -347,7 +348,11 @@ const Influencer = (props: any) => {
 				<Section yPadding="py-6" xPadding="px-0">
 					<CagaljsNavbarItems
 						logo={<Logo xl hideText />}
-						search={<AutocompleteSmall />}
+						search={
+							<AutocompleteImpl>
+								<SearchSmall />
+							</AutocompleteImpl>
+						}
 						themeSwitch={<ThemeSwitch />}
 					>
 						{props.navBarLinks?.map((item: any) =>
