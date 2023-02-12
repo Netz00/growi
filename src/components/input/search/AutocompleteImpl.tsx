@@ -6,7 +6,7 @@ import useSWR from 'swr';
 
 import { scrollTo } from '../../../hooks/scrollTo';
 import { useDebouncedCallback } from '../../../hooks/useDebounceCallback';
-import useSearch from '../../../hooks/useSearch';
+import { useFuse } from '../../../hooks/useFuse';
 
 type Suggestion = {
 	id: number;
@@ -49,7 +49,7 @@ const AutocompleteImpl = (props: IAutocompleteProps) => {
 		fetcher
 	);
 
-	const search = useSearch(
+	const { search } = useFuse(
 		data?.map(
 			(el: Suggestion): Suggestion => ({
 				id: el.id,
@@ -60,10 +60,32 @@ const AutocompleteImpl = (props: IAutocompleteProps) => {
 				profileImage: el.profileImage,
 				profileImageAlt: el.profileImageAlt,
 			})
-		)
+		),
+		{
+			includeScore: true,
+			includeMatches: true,
+			useExtendedSearch: true,
+			keys: [
+				'firstName',
+				'lastName',
+				{
+					name: 'username',
+					weight: 1.5,
+				},
+				{
+					name: 'tags',
+					weight: 0.5,
+				},
+			],
+			matchAllOnEmptyQuery: false,
+			limit: 8,
+			distance: 20,
+			location: 0,
+			threshold: 0.3,
+		}
 	);
 
-	const handleClick = useDebouncedCallback((userInput: string) => {
+	const onSearch = useDebouncedCallback((userInput: string) => {
 		const result = search(userInput);
 		const filteredSuggestions = result.map((el: any) => el.item as Suggestion);
 		setAutocomplete({
@@ -77,8 +99,7 @@ const AutocompleteImpl = (props: IAutocompleteProps) => {
 	// Event listener called on every change
 	const onChange = (e: any) => {
 		const userInput = e.currentTarget.value;
-
-		handleClick(userInput);
+		onSearch(userInput);
 		setAutocomplete({
 			...autocomplete,
 			userInput,
