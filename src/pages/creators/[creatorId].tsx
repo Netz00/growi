@@ -1,28 +1,9 @@
 import fs from 'fs';
 
-import { useState, useEffect } from 'react';
-
-import {
-	Chart as ChartJS,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Title,
-	Tooltip,
-	Legend,
-	CategoryScale,
-	ArcElement,
-	Filler,
-	BarElement,
-	ChartOptions,
-	RadialLinearScale,
-	ChartData,
-} from 'chart.js';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Bar, Doughnut, Radar } from 'react-chartjs-2';
-import { InstagramEmbed } from 'react-social-media-embed';
 
 import { Background } from '../../components/background/Background';
 import { Button } from '../../components/button/Button';
@@ -31,6 +12,7 @@ import { Add } from '../../components/icons/Add';
 import { Clickable } from '../../components/icons/Clickable';
 import { Message } from '../../components/icons/Message';
 import { Share } from '../../components/icons/Share';
+import CreatorProfileGraphs from '../../components/influencerProfile/graphs/CreatorProfileGraphs';
 import AutocompleteImpl from '../../components/input/search/AutocompleteImpl';
 import SearchSmall from '../../components/input/search/SearchSmall';
 import { Meta } from '../../components/layout/Meta';
@@ -43,22 +25,12 @@ import abbreviateNumber from '../../hooks/abbreviateNumber';
 import currencyFormatter from '../../hooks/currencyFormatter';
 import { AppConfig } from '../../utils/AppConfig';
 
-ChartJS.register(
-	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Filler,
-	Title,
-	Tooltip,
-	Legend,
-	ArcElement,
-	BarElement,
-	RadialLinearScale
+const InstagramEmbeds = dynamic(
+	() => import('../../components/influencerProfile/InstagramEmbed'),
+	{
+		ssr: false,
+	}
 );
-ChartJS.defaults.font.family = 'system-ui';
-ChartJS.defaults.font.weight = '300';
-ChartJS.defaults.plugins.legend.labels.color = '#555';
 
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
@@ -99,243 +71,6 @@ export async function getStaticProps(context: any) {
 }
 const Influencer = (props: any) => {
 	const router = useRouter();
-
-	const [hasWindow, setHasWindow] = useState(false);
-	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			setHasWindow(true);
-		}
-	}, []);
-
-	// Bar graph
-	const monthlyStats: ChartData = {
-		labels: [...props.influencerDetails.monthlyStats.map((el: any) => el.month)],
-		datasets: [
-			{
-				label: 'Followers',
-				yAxisID: 'followers',
-
-				borderRadius: 20,
-				data: [
-					...props.influencerDetails.monthlyStats.map(
-						(el: any) => el.followerNumber
-					),
-				],
-				backgroundColor: ['#31C0A9'],
-			},
-			{
-				label: 'Engagment ratio',
-				yAxisID: 'engagment',
-				borderRadius: 20,
-				data: [
-					...props.influencerDetails.monthlyStats.map(
-						(el: any) => el.engagment
-					),
-				],
-				backgroundColor: ['#CB5150'],
-			},
-		],
-	};
-
-	const optionsBar: ChartOptions = {
-		responsive: true,
-		maintainAspectRatio: false,
-		plugins: {
-			legend: {
-				position: 'top',
-				align: 'start',
-				labels: {
-					usePointStyle: true,
-					pointStyle: 'circle',
-					padding: 12,
-					font: { size: 14 },
-				},
-				title: {
-					text: 'Followers and engagment',
-					display: true,
-					color: '#555',
-					font: { size: 16 },
-					position: 'start',
-				},
-			},
-		},
-		scales: {
-			x: {
-				ticks: {
-					font: {
-						size: 14,
-					},
-				},
-			},
-			followers: {
-				type: 'linear' as any,
-				display: true,
-				position: 'left',
-				// grid line settings
-				grid: {
-					drawOnChartArea: false, // only want the grid lines for one axis to show up
-				},
-				ticks: {
-					callback(value: number | string): string {
-						return abbreviateNumber(
-							parseInt(value.toString(), 10)
-						).toString();
-					},
-					backdropPadding: {
-						top: 20,
-					},
-					font: {
-						size: 14,
-						lineHeight: 2,
-					},
-				},
-			},
-			engagment: {
-				type: 'linear' as any,
-				display: true,
-				position: 'right',
-				ticks: {
-					callback(value: number | string): string {
-						return `${value}%`;
-					},
-					font: {
-						size: 14,
-					},
-				},
-			},
-		},
-	};
-	// Radar
-	const followerLocation = {
-		labels: props.influencerDetails.followerLocationSplit.city,
-		datasets: props.influencerDetails.followerLocationSplit.year.map(
-			(year: any) => ({
-				label: year.year,
-				fill: true,
-				backgroundColor: year.year % 2 === 0 ? '#CB51503b' : '#31c0a936',
-				borderColor: year.year % 2 === 0 ? '#d97684d9' : '#31c0a9ba',
-				pointBorderColor: '#fff',
-				pointBackgroundColor: year.year % 2 === 0 ? '#CB5150' : '#31C0A9',
-				data: year.distribution,
-			})
-		),
-	};
-
-	const optionsRadar: ChartOptions = {
-		responsive: true,
-		plugins: {
-			legend: {
-				position: 'top',
-				align: 'start',
-				labels: {
-					usePointStyle: true,
-					pointStyle: 'circle',
-					font: { size: 14 },
-				},
-				title: {
-					text: 'Followers cities distribution',
-					display: true,
-					color: '#555',
-					font: { size: 16 },
-					position: 'start',
-				},
-			},
-		},
-	};
-
-	// Pie
-	const followerGenderSplit = {
-		backgroundColor: ['#31C0A9', '#cbd5e0', '#CB5150'],
-		labels: [
-			...Object.getOwnPropertyNames(
-				props.influencerDetails.followerGenderSplit
-			),
-		],
-		datasets: [
-			{
-				label: 'Sex split',
-				data: [
-					...Object.entries(
-						props.influencerDetails.followerGenderSplit
-					).map(([, value]) => value),
-				],
-				backgroundColor: ['#31C0A9', '#cbd5e0', '#CB5150'],
-				hoverOffset: 4,
-			},
-		],
-	};
-
-	const optionsPie = {
-		responsive: true,
-		maintainAspectRatio: false,
-
-		plugins: {
-			legend: {
-				position: 'left',
-				align: 'start',
-				labels: {
-					usePointStyle: true,
-					pointStyle: 'circle',
-					font: { size: 14 },
-				},
-				title: {
-					text: ['Followers'],
-					display: true,
-					color: '#555',
-					font: { size: 16 },
-					position: 'start',
-				},
-			},
-		},
-		elements: { arc: { borderWidth: 3 } },
-		cutout: 30,
-	};
-
-	// Pie
-	const followerRealSplit = {
-		backgroundColor: ['#31C0A9', '#CB5150'],
-		labels: [
-			...Object.getOwnPropertyNames(props.influencerDetails.followerRealSplit),
-		],
-		datasets: [
-			{
-				label: 'Fake followers split',
-				data: [
-					...Object.entries(props.influencerDetails.followerRealSplit).map(
-						([, value]) => value
-					),
-				],
-				backgroundColor: ['#31C0A9', '#CB5150'],
-				hoverOffset: 4,
-			},
-		],
-	};
-
-	const optionsPie2 = {
-		responsive: true,
-		maintainAspectRatio: false,
-
-		plugins: {
-			legend: {
-				position: 'left',
-				align: 'start',
-				labels: {
-					usePointStyle: true,
-					pointStyle: 'circle',
-					font: { size: 14 },
-				},
-				title: {
-					text: ['Followers'],
-					display: true,
-					color: '#555',
-					font: { size: 16 },
-					position: 'start',
-				},
-			},
-		},
-		elements: { arc: { borderWidth: 3 } },
-		cutout: 30,
-	};
 
 	return (
 		<div className="antialiased text-gray-600">
@@ -480,61 +215,11 @@ const Influencer = (props: any) => {
 			</Section>
 
 			<Section description="" yPadding="pt-6 pb-6" textBottomMargin="mb-10">
-				<div className="text-3xl pb-4">Audience</div>
-				<div className="bg-slate-50 rounded-lg p-5">
-					<div className="w-full h-80">
-						<Bar
-							data={monthlyStats as any}
-							options={optionsBar as any}
-						/>
-					</div>
-					<div className="flex flex-wrap justify-between">
-						<div className="relative md:w-1/2 w-full">
-							<div className="relative p-5 h-1/2">
-								<Doughnut
-									data={followerGenderSplit}
-									options={optionsPie as any}
-								/>
-							</div>
-							<div className="relative p-5 h-1/2">
-								<Doughnut
-									data={followerRealSplit}
-									options={optionsPie2 as any}
-								/>
-							</div>
-						</div>
-
-						<div className="relative p-5 md:w-1/2 w-full">
-							<Radar
-								data={followerLocation}
-								options={optionsRadar as any}
-							/>
-						</div>
-					</div>
-				</div>
+				<CreatorProfileGraphs {...props.influencerDetails} />
 			</Section>
 
 			<Section yPadding="pt-6 pb-6" textBottomMargin="mb-10">
-				<div className="text-3xl pb-4">Featured posts</div>
-				<div className="flex flex-wrap justify-around">
-					{hasWindow &&
-						props.influencerDetails.postLast.map(
-							(postUrl: string, key: number) => (
-								<InstagramEmbed
-									key={props.influencerDetails.username + key}
-									url={postUrl}
-									width="fit"
-									captioned
-								/>
-							)
-						)}
-				</div>
-				<Link
-					className="m-auto block w-fit my-10"
-					href={`https://www.instagram.com/${props.influencerDetails.username}/`}
-				>
-					<Button>See more</Button>
-				</Link>
+				<InstagramEmbeds {...props.influencerDetails} />
 			</Section>
 			<Footer {...props.footer} />
 		</div>
