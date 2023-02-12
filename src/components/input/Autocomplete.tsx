@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import { scrollTo } from '../../hooks/scrollTo';
+import { useDebouncedCallback } from '../../hooks/useDebounceCallback';
 import useSearch from '../../hooks/useSearch';
 
 type Suggestion = {
@@ -59,50 +60,26 @@ const Autocomplete = () => {
 		)
 	);
 
-	/**
-     * TODO
-     * 
-    	const delayedQuery = useCallback(
-		_.debounce((userInput: string) => {
-			const result = search(userInput);
-			const filteredSuggestions = result.map(
-				(el: any) => el.item as Suggestion
-			);
-			setAutocomplete({
-				userInput,
-				activeSuggestion: 0,
-				filteredSuggestions,
-				showSuggestions: true,
-			});
-		}, 300),
-		[]
-	);
-	// Event listener called on every change
-	const onChange = (e: any) => {
-		const userInput = e.currentTarget.value;
-		setAutocomplete({
-			...autocomplete,
-			userInput,
-		});
-		delayedQuery(userInput);
-	};
-     */
-
-	// Event listener called on every change
-	const onChange = (e: any) => {
-		const userInput = e.currentTarget.value;
-		// setAutocomplete({
-		// 	...autocomplete,
-		// 	userInput,
-		// });
-		// delayedQuery(userInput);
-
+	const handleClick = useDebouncedCallback((userInput: string) => {
 		const result = search(userInput);
 		const filteredSuggestions = result.map((el: any) => el.item as Suggestion);
 		setAutocomplete({
 			userInput,
 			activeSuggestion: 0,
 			filteredSuggestions,
+			showSuggestions: true,
+		});
+	}, 500);
+
+	// Event listener called on every change
+	const onChange = (e: any) => {
+		const userInput = e.currentTarget.value;
+
+		handleClick(userInput);
+		setAutocomplete({
+			...autocomplete,
+			userInput,
+			activeSuggestion: 0,
 			showSuggestions: true,
 		});
 	};
