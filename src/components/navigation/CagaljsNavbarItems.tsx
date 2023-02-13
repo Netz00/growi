@@ -10,7 +10,7 @@ type ICagaljsNavbarItemsProps = {
 	logo: ReactNode;
 	themeSwitch?: ReactNode;
 	search?: ReactNode;
-	children: ReactNode;
+	navBarLinks: JSON[];
 };
 
 const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
@@ -63,7 +63,20 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 						id="navBar"
 						className="flex items-center font-medium text-xl text-gray-800 flex-wrap max-md:justify-between gap-y-4 gap-5"
 					>
-						{props.children}
+						{props.navBarLinks?.map((item: any) =>
+							item.active ? (
+								<li
+									key={item.key}
+									className="underline underline-offset-2 decoration-primary-500 text-primary-500 pointer-events-none"
+								>
+									{item.text}
+								</li>
+							) : (
+								<li key={item.key}>
+									<Link href={item.link}>{item.text}</Link>
+								</li>
+							)
+						)}
 					</ul>
 					<button
 						ref={refButton}

@@ -2,7 +2,6 @@ import fs from 'fs';
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Background } from '../../components/background/Background';
@@ -79,7 +78,7 @@ const Influencer = (props: any) => {
 				description={props.siteDescription ?? AppConfig.description}
 			/>
 
-			<Background color="bg-gray-100">
+			<Background>
 				<Section yPadding="py-6" xPadding="px-0">
 					<CagaljsNavbarItems
 						logo={<Logo xl hideText />}
@@ -89,22 +88,8 @@ const Influencer = (props: any) => {
 							</AutocompleteImpl>
 						}
 						themeSwitch={<ThemeSwitch />}
-					>
-						{props.navBarLinks?.map((item: any) =>
-							item.active ? (
-								<li
-									key={item.key}
-									className="underline underline-offset-2 decoration-primary-500 text-primary-500 pointer-events-none"
-								>
-									{item.text}
-								</li>
-							) : (
-								<li key={item.key}>
-									<Link href={item.link}>{item.text}</Link>
-								</li>
-							)
-						)}
-					</CagaljsNavbarItems>
+						navBarLinks={props.navBarLinks}
+					/>
 				</Section>
 			</Background>
 

@@ -2,11 +2,16 @@ import fs from 'fs';
 
 import Link from 'next/link';
 
-import { Button } from '../components/button/Button';
+import { Background } from '../components/background/Background';
+import { Button, ButtonStyle } from '../components/button/Button';
+import { HeroContent } from '../components/hero/HeroContent';
 import { Meta } from '../components/layout/Meta';
+import { Section } from '../components/layout/Section';
+import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
 import { Banner } from '../components/templates/Banner';
 import { Footer } from '../components/templates/Footer';
-import { Hero } from '../components/templates/Hero';
+import { Logo } from '../components/templates/Logo';
+import ThemeSwitch from '../components/templates/ThemeSwitch';
 import { VerticalFeatures } from '../components/templates/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 
@@ -16,55 +21,36 @@ const Index = (props: any) => (
 			title={props.siteTitle ?? AppConfig.title}
 			description={props.siteDescription ?? AppConfig.description}
 		/>
-		<Hero
-			navBarItems={
-				<>
-					{props.hero.navBarLinks?.map((item: any) =>
-						item.active ? (
-							<li
-								key={item.key}
-								className="underline underline-offset-2 decoration-primary-500 text-primary-500 pointer-events-none"
-							>
-								{item.text}
-							</li>
-						) : (
-							<li key={item.key}>
-								<Link href={item.link}>{item.text}</Link>
-							</li>
-						)
-					)}
-				</>
-			}
-			title={
-				<>
-					{props.hero.title.part1}
-					<span className="text-primary-500 dark:text-darkMode-secondary-light">
-						{props.hero.title.part2}
-					</span>
-				</>
-			}
-			description={props.hero.description}
-			buttons={
-				<>
-					<Link href={props.hero.button_1.link}>
-						<Button
-							xl
-							color="bg-brands-primary-300 hover:bg-brands-primary-400 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200"
-						>
-							{props.hero.button_1.text}
-						</Button>
-					</Link>
-					<Link href={props.hero.button_2.link}>
-						<Button
-							xl
-							color="bg-creators-primary-100 hover:bg-creators-primary-200 dark:bg-darkMode-cta2-100 dark:hover:bg-darkMode-cta2-200"
-						>
-							{props.hero.button_2.text}
-						</Button>
-					</Link>
-				</>
-			}
-		/>
+
+		<Background>
+			<Section yPadding="py-6" xPadding="px-0">
+				<CagaljsNavbarItems
+					logo={<Logo xl />}
+					themeSwitch={<ThemeSwitch />}
+					navBarLinks={props.hero.navBarLinks}
+				/>
+			</Section>
+			<Section yPadding="md:pt-20 md:pb-32 pb-10">
+				<HeroContent
+					title={props.hero.title}
+					description={props.hero.description}
+					buttons={
+						<>
+							<Link href={props.hero.button_1.link}>
+								<Button xl style={ButtonStyle.BRAND_PRIMARY}>
+									{props.hero.button_1.text}
+								</Button>
+							</Link>
+							<Link href={props.hero.button_2.link}>
+								<Button xl style={ButtonStyle.CREATOR_PRIMARY}>
+									{props.hero.button_2.text}
+								</Button>
+							</Link>
+						</>
+					}
+				/>
+			</Section>
+		</Background>
 
 		{props.sections.map((section: any) => (
 			<VerticalFeatures {...section} key={section.key} />

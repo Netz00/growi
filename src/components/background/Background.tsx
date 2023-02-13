@@ -2,11 +2,10 @@ import { ReactNode } from 'react';
 
 type IBackgroundProps = {
 	children: ReactNode;
-	color: string;
 };
 
 const Background = (props: IBackgroundProps) => (
-	<div className={props.color}>{props.children}</div>
+	<div className="bg-gray-100 dark:bg-darkMode-primary-dark">{props.children}</div>
 );
 
 export { Background };
