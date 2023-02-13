@@ -1,16 +1,17 @@
 # Growi - frontend
 
-Growi - Influencer marketing platform - frontend part
+[![Next.js](https://img.shields.io/badge/Next.Js-13-blue?style=for-the-badge)](https://nextjs.org/) 
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.2-blue?style=for-the-badge)](https://tailwindcss.com/) 
+[![Fuse.js](https://img.shields.io/badge/Fuse.js-6.6.2-blue?style=for-the-badge)](https://fusejs.io/) 
+[![License MIT](https://img.shields.io/github/license/adrielcafe/hal.svg?style=for-the-badge&color=yellow)](https://opensource.org/licenses/MIT)
 
-### Built with
-- [Next.js for Static Site Generator](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [fusejs - fuzzy-search library](https://fusejs.io/)
-
+## Growi - Influencer marketing platform - frontend part
 
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and spiced with configuration and boilerplate by [`creativedesignsguru`](https://creativedesignsguru.com).
+
+---
 
 ## Running
 
@@ -49,4 +50,4 @@ All generated files are located at `out` folder, which you can deploy with any h
 
 ## VSCode information (optional)
 
-Install the extension in `.vscode/extension.json`.
+Install the extensions in `.vscode/extension.json`.
