@@ -130,7 +130,7 @@ const AutocompleteImpl = (props: IAutocompleteProps) => {
 	};
 
 	const onSubmit = (term: string) =>
-		router.push(`/creators/${encodeURIComponent(term)}`);
+		term && router.push(`/creators/${encodeURIComponent(term)}`);
 
 	const onClick = (e: any) => {
 		setAutocomplete({

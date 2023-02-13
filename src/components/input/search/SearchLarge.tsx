@@ -8,7 +8,13 @@ const SearchLarge = (props: ISearchLargeProps) => {
 
 	return (
 		<div className="relative">
-			<div className="relative">
+			<form
+				className="relative"
+				onSubmit={(e: any) =>
+					e.preventDefault() ||
+					props.onSubmit(props.autocomplete?.userInput)
+				}
+			>
 				<div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 					<svg
 						aria-hidden="true"
@@ -41,14 +47,15 @@ const SearchLarge = (props: ISearchLargeProps) => {
 					value={props.autocomplete?.userInput}
 				/>
 				<button
+					type="submit"
 					className="text-white absolute right-2.5 bottom-2.5 top-2.5
 					bg-primary-500 hover:bg-primary-600 focus:ring-4 
 					focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-4 py-2"
-					onClick={() => props.onSubmit(props.autocomplete?.userInput)}
 				>
 					Search
 				</button>
-			</div>
+			</form>
+
 			{props.autocomplete?.showSuggestions &&
 				props.autocomplete.userInput &&
 				(props.autocomplete.filteredSuggestions.length ? (
@@ -107,7 +114,7 @@ const SearchLarge = (props: ISearchLargeProps) => {
 						)}
 					</ul>
 				) : (
-					<div className="absolute text-slate-300 p-2">
+					<div className="absolute text-slate-400 text-sm p-2">
 						<em>No suggestions, you&apos;re on your own!</em>
 					</div>
 				))}
