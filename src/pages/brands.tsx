@@ -23,14 +23,14 @@ const Brands = (props: any) => (
 		/>
 
 		<Background>
-			<Section yPadding="py-6" xPadding="px-0">
+			<Section className="py-6">
 				<CagaljsNavbarItems
 					logo={<Logo xl />}
 					themeSwitch={<ThemeSwitch />}
 					navBarLinks={props.hero.navBarLinks}
 				/>
 			</Section>
-			<Section yPadding="md:pt-20 md:pb-32 pb-10">
+			<Section className="md:pt-20 md:pb-32 pb-10 pt-16 px-3">
 				<HeroContent
 					title={props.hero.title}
 					description={props.hero.description}

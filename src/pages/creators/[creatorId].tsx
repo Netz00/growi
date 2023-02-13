@@ -79,7 +79,7 @@ const Influencer = (props: any) => {
 			/>
 
 			<Background>
-				<Section yPadding="py-6" xPadding="px-0">
+				<Section className="py-6">
 					<CagaljsNavbarItems
 						logo={<Logo xl hideText />}
 						search={
@@ -115,7 +115,7 @@ const Influencer = (props: any) => {
 				</div>
 			</div>
 
-			<Section yPadding="pt-4 pb-6" textBottomMargin="mb-10">
+			<Section className="pt-4 pb-6 px-3" margin="mb-10">
 				<div className="flex flex-wrap md:gap-10 gap-6 justify-between">
 					<div className="flex md:gap-10 gap-8 max-md:items-center">
 						<div
@@ -199,11 +199,11 @@ const Influencer = (props: any) => {
 				</div>
 			</Section>
 
-			<Section description="" yPadding="pt-6 pb-6" textBottomMargin="mb-10">
+			<Section description="" className="py-6 px-3" margin="mb-10">
 				<CreatorProfileGraphs {...props.influencerDetails} />
 			</Section>
 
-			<Section yPadding="pt-6 pb-6" textBottomMargin="mb-10">
+			<Section className="py-6 px-3" margin="mb-10">
 				<InstagramEmbeds {...props.influencerDetails} />
 			</Section>
 			<Footer {...props.footer} />

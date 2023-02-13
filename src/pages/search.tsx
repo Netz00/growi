@@ -26,7 +26,7 @@ const Search = (props: ISearchProps) => (
 		/>
 
 		<Background>
-			<Section yPadding="py-6" xPadding="px-0">
+			<Section className="py-6">
 				<CagaljsNavbarItems
 					logo={<Logo xl />}
 					themeSwitch={<ThemeSwitch />}
@@ -34,17 +34,13 @@ const Search = (props: ISearchProps) => (
 				/>
 			</Section>
 
-			<Section yPadding="pt-20 pb-32">
+			<Section className="pt-20 pb-32 px-3">
 				<AutocompleteImpl>
 					<SearchLarge />
 				</AutocompleteImpl>
 			</Section>
 		</Background>
-		<Section
-			description="Search by category"
-			yPadding="pt-6 pb-6"
-			textBottomMargin="mb-0"
-		>
+		<Section description="Search by category" className="py-6 px-3" margin="">
 			<div className="flex flex-row gap-14 max-md:gap-10 flex-nowrap justify-center overflow-auto whitespace-nowrap overflow-y-hidden pt-12">
 				{props.categories?.map((item: any) => (
 					<Category {...item} key={item.key} />
@@ -56,8 +52,8 @@ const Search = (props: ISearchProps) => (
 		</Section>
 		<Section
 			description="Today's best picks"
-			yPadding="pt-6 pb-6"
-			textBottomMargin="mb-10"
+			className="py-6 px-3"
+			margin="mb-10"
 		>
 			<div className="flex flex-row gap-16 max-md:gap-10 flex-wrap justify-center">
 				{props.influencers?.map((item: any) => (
