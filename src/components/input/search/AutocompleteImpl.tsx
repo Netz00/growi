@@ -4,9 +4,9 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
-import { scrollTo } from '../../../hooks/scrollTo';
 import { useDebouncedCallback } from '../../../hooks/useDebounceCallback';
 import { useFuse } from '../../../hooks/useFuse';
+import { scrollTo } from '../../../utils/scrollTo';
 
 type Suggestion = {
 	id: number;

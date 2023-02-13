@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import useComponentVisible from '../../hooks/useComponentVisible';
 import useWindowSize from '../../hooks/useWindowSize';
-import { detectWrapItems, getWrapItems } from '../../hooks/wrapItems';
+import { detectWrapItems, getWrapItems } from '../../utils/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
 	logo: ReactNode;

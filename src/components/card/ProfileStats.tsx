@@ -1,4 +1,4 @@
-import abbreviateNumber from '../../hooks/abbreviateNumber';
+import abbreviateNumber from '../../utils/abbreviateNumber';
 
 type IProfileStatsProps = {
 	follower: number;

@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import currencyFormatter from '../../hooks/currencyFormatter';
 import useComponentVisible from '../../hooks/useComponentVisible';
+import currencyFormatter from '../../utils/currencyFormatter';
 import { Add } from '../icons/Add';
 import { Clickable } from '../icons/Clickable';
 import { CardCarousel, IMediaProps } from './CardCarousel';

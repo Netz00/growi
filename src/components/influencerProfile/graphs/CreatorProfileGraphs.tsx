@@ -16,7 +16,7 @@ import {
 } from 'chart.js';
 import { Bar, Doughnut, Radar } from 'react-chartjs-2';
 
-import abbreviateNumber from '../../../hooks/abbreviateNumber';
+import abbreviateNumber from '../../../utils/abbreviateNumber';
 
 ChartJS.register(
 	CategoryScale,
