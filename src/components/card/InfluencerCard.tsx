@@ -46,12 +46,17 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col`}
 			>
 				<div className="h-56 md:h-72">
-					<CardCarousel media={[...props.media]} />
+					<CardCarousel
+						media={[...props.media]}
+						disabled={isSavePopupVisible}
+					/>
 				</div>
 
 				<Link
 					href={`${router.basePath}/creators/${props.username}`}
-					className="hover:bg-slate-100"
+					className={`hover:bg-slate-100 ${
+						isSavePopupVisible && 'pointer-events-none'
+					}`}
 				>
 					<div className="flex flex-col gap-4 p-5">
 						<div className="flex flex-row justify-between">
@@ -108,6 +113,7 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 							onClick={() => setSavePopup(!isSavePopupVisible)}
 							scale
 							hover
+							disabled={isSavePopupVisible}
 						>
 							<Add />
 						</Clickable>

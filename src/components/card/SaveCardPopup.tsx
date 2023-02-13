@@ -19,7 +19,7 @@ const SaveCardPopup = (props: ISaveCardPopupProps) => {
 
 	const addList = () => {
 		if (newListInput?.current?.value !== '')
-			setLists([...lists, newListInput?.current?.value ?? '']);
+			setLists([newListInput?.current?.value ?? '', ...lists]);
 	};
 
 	useEffect(() => {

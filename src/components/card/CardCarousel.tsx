@@ -12,6 +12,7 @@ type IMediaProps = {
 
 type ICardCarouselProps = {
 	media: [IMediaProps];
+	disabled?: boolean;
 };
 //  TODO video doesn't work, router.basePath and element.url aren't AVAIBLE at client side: url={`${router.basePath}${element.url}`}
 
@@ -29,7 +30,7 @@ const CardCarousel = (props: ICardCarouselProps) => {
 	return (
 		<div
 			id="default-carousel"
-			className="relative h-full"
+			className={`relative h-full ${props.disabled && 'pointer-events-none'}`}
 			data-carousel="static"
 		>
 			{/* <!-- Carousel wrapper --> */}
