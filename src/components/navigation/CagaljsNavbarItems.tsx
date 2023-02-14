@@ -8,7 +8,6 @@ import { detectWrapItems, getWrapItems } from '../../utils/wrapItems';
 
 type ICagaljsNavbarItemsProps = {
 	logo: ReactNode;
-	themeSwitch?: ReactNode;
 	search?: ReactNode;
 	navBarLinks: JSON[];
 };
@@ -49,12 +48,9 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 	return (
 		<>
 			<div className="flex justify-between items-center md:gap-8 gap-4 md:px-6 px-2">
-				<div className="flex justify-between items-center md:gap-8 gap-2 md:px-6">
-					<Link href="/" legacyBehavior>
-						<a className="flex">{props.logo}</a>
-					</Link>
-					{props.themeSwitch && <div>{props.themeSwitch}</div>}
-				</div>
+				<Link href="/" legacyBehavior>
+					<a className="flex">{props.logo}</a>
+				</Link>
 
 				{props.search && <div>{props.search}</div>}
 

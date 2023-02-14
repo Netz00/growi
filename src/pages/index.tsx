@@ -4,10 +4,11 @@ import Link from 'next/link';
 
 import { Background } from '../components/background/Background';
 import { Button, ButtonStyle } from '../components/button/Button';
+import { Dropdown } from '../components/button/Dropdown';
 import { HeroContent } from '../components/hero/HeroContent';
 import { Meta } from '../components/layout/Meta';
 import { Section } from '../components/layout/Section';
-import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
+import { Navbar } from '../components/navigation/Navbar';
 import { Banner } from '../components/templates/Banner';
 import { Footer } from '../components/templates/Footer';
 import { Layout } from '../components/templates/Layout';
@@ -25,11 +26,14 @@ const Index = (props: any) => (
 
 		<Background>
 			<Section className="py-6">
-				<CagaljsNavbarItems
-					logo={<Logo xl />}
-					themeSwitch={<ThemeSwitch />}
-					navBarLinks={props.hero.navBarLinks}
-				/>
+				<Navbar logo={<Logo xl />}>
+					<li>
+						<Dropdown items={['English', 'Croatian', 'Polish']} />
+					</li>
+					<li>
+						<ThemeSwitch />
+					</li>
+				</Navbar>
 			</Section>
 			<Section className="md:pt-20 md:pb-32 pb-10 pt-16 px-3">
 				<HeroContent

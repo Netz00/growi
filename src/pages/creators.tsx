@@ -12,7 +12,6 @@ import { Banner } from '../components/templates/Banner';
 import { Footer } from '../components/templates/Footer';
 import { Layout } from '../components/templates/Layout';
 import { Logo } from '../components/templates/Logo';
-import ThemeSwitch from '../components/templates/ThemeSwitch';
 import { VerticalFeatures } from '../components/templates/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 
@@ -27,7 +26,6 @@ const Creators = (props: any) => (
 			<Section className="py-6">
 				<CagaljsNavbarItems
 					logo={<Logo xl />}
-					themeSwitch={<ThemeSwitch />}
 					navBarLinks={props.hero.navBarLinks}
 				/>
 			</Section>

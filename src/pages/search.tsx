@@ -14,7 +14,6 @@ import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems'
 import { Footer } from '../components/templates/Footer';
 import { Layout } from '../components/templates/Layout';
 import { Logo } from '../components/templates/Logo';
-import ThemeSwitch from '../components/templates/ThemeSwitch';
 import { AppConfig } from '../utils/AppConfig';
 
 type ISearchProps = any;
@@ -30,7 +29,6 @@ const Search = (props: ISearchProps) => (
 			<Section className="py-6">
 				<CagaljsNavbarItems
 					logo={<Logo xl />}
-					themeSwitch={<ThemeSwitch />}
 					navBarLinks={props.hero.navBarLinks}
 				/>
 			</Section>

@@ -19,7 +19,6 @@ import { Section } from '../../components/layout/Section';
 import { CagaljsNavbarItems } from '../../components/navigation/CagaljsNavbarItems';
 import { Footer } from '../../components/templates/Footer';
 import { Logo } from '../../components/templates/Logo';
-import ThemeSwitch from '../../components/templates/ThemeSwitch';
 import abbreviateNumber from '../../utils/abbreviateNumber';
 import { AppConfig } from '../../utils/AppConfig';
 import currencyFormatter from '../../utils/currencyFormatter';
@@ -87,7 +86,6 @@ const Influencer = (props: any) => {
 								<SearchSmall />
 							</AutocompleteImpl>
 						}
-						themeSwitch={<ThemeSwitch />}
 						navBarLinks={props.navBarLinks}
 					/>
 				</Section>
