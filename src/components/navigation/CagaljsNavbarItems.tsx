@@ -57,7 +57,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 				<nav className="flex gap-4">
 					<ul
 						id="navBar"
-						className="flex items-center font-medium text-xl text-gray-800 flex-wrap max-md:justify-between gap-y-4 gap-5"
+						className="flex items-center font-medium text-xl text-gray-800 dark:text-gray-400 flex-wrap max-md:justify-between gap-y-4 gap-5"
 					>
 						{props.navBarLinks?.map((item: any) =>
 							item.active ? (
@@ -68,7 +68,10 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 									{item.text}
 								</li>
 							) : (
-								<li key={item.key}>
+								<li
+									key={item.key}
+									className="hover:text-primary-500"
+								>
 									<Link href={item.link}>{item.text}</Link>
 								</li>
 							)
@@ -81,9 +84,9 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 						className={`${
 							isDropdownVisible ? 'rotate-90' : 'rotate-0'
 						} h-fit hidden items-center 
-                        p-2 text-sm font-medium text-center text-gray-900 rounded-lg 
-                        hover:bg-slate-100 focus:ring-4
-                        focus:ring-gray-50
+                        p-2 text-sm font-medium text-center text-gray-900 rounded-lg dark:text-gray-400
+                        hover:bg-slate-100 focus:ring-4 dark:hover:bg-gray-800
+                        focus:ring-gray-50 dark:focus:ring-gray-700
                         duration-200`}
 						type="button"
 						onClick={() => setDropdown(!isDropdownVisible)}
@@ -107,7 +110,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 					id="dropdown"
 					className={`w-fit ${
 						isDropdownVisible ? 'flex' : 'hidden'
-					} flex-col items-start gap-5 font-medium text-xl text-gray-800 pl-6 pr-10 py-3 absolute right-0
+					} flex-col items-start gap-5 font-medium text-xl text-gray-800 dark:text-gray-400 dark:bg-gray-800 dark:outline-slate-600 pl-6 pr-10 py-3 absolute right-0
                     bg-gray-100 outline outline-1 outline-slate-200
                     dropdown_menu z-20
                     `}

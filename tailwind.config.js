@@ -29,21 +29,10 @@ module.exports = {
 					800: '#206073',
 					900: '#2F4858',
 				},
-				darkMode: {
-					primary: { dark: '#191A19', light: '#344230' },
-					secondary: {
-						dark: '#1E5128',
-						default: '#4E9F3D',
-						light: '#D8E9A8',
-					},
-					cta1: {
-						100: '#3B7B68',
-						200: '#2D716B',
-					},
-					cta2: {
-						100: '#B73A24',
-						200: '#AD2E53',
-					},
+				dark: {
+					primary: '#000',
+					secondary: '#111111',
+					green: '#4ECCA3',
 				},
 				gray: {
 					100: '#f7fafc',

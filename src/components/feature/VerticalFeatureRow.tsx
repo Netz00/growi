@@ -20,7 +20,7 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
 		<div
 			className={`mt-10 md:mt-5 flex flex-wrap items-center
             ${props.reverse && 'flex-row-reverse'}
-            odd:bg-gray-100 p-3 dark:odd:bg-darkMode-primary-dark
+            odd:bg-gray-100 p-3 dark:odd:bg-dark-primary
             `}
 		>
 			<div className="w-full sm:w-1/2">

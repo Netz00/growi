@@ -15,7 +15,7 @@ const Navbar = (props: ICagaljsNavbarItemsProps) => {
 					<a>{props.logo}</a>
 				</Link>
 				{props.children && (
-					<ul className="flex items-center flex-nowrap max-md:justify-between gap-16 font-medium text-xl text-gray-800">
+					<ul className="flex items-center flex-nowrap max-md:justify-between md:gap-16 font-medium text-xl text-gray-800">
 						{props.children}
 					</ul>
 				)}

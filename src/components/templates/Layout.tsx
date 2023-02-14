@@ -5,7 +5,7 @@ type IBannerProps = {
 };
 
 const Layout = ({ children }: IBannerProps) => (
-	<div className="antialiased text-gray-600 dark:bg-darkMode-primary-light">
+	<div className="antialiased text-gray-600 dark:bg-dark-secondary">
 		{children}
 	</div>
 );

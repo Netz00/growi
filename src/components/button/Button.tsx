@@ -16,7 +16,7 @@ type IButtonProps = {
 const Button = (props: IButtonProps) => {
 	return (
 		<div
-			className={`inline-block rounded-md text-center 
+			className={`inline-block rounded-md text-center hover:opacity-60
             ${
 				props.xl
 					? 'font-extrabold text-xl py-4 px-6'
@@ -24,14 +24,14 @@ const Button = (props: IButtonProps) => {
 			}
                     text-white ${
 						(props.style === ButtonStyle.CREATOR_PRIMARY &&
-							'bg-creators-primary-100 hover:bg-creators-primary-200 dark:bg-darkMode-cta2-100 dark:hover:bg-darkMode-cta2-200') ||
+							'bg-creators-primary-100 dark:bg-gradient-instagram') ||
 						(props.style === ButtonStyle.CREATOR_SECONDARY &&
-							'bg-primary-500 hover:bg-primary-600 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200') ||
+							'bg-primary-500 dark:bg-dark-green') ||
 						(props.style === ButtonStyle.BRAND_PRIMARY &&
-							'bg-brands-primary-300 hover:bg-brands-primary-400 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200') ||
+							'bg-brands-primary-300 dark:bg-dark-green') ||
 						(props.style === ButtonStyle.BRAND_SECONDARY &&
-							'bg-primary-500 hover:bg-primary-600 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200') ||
-						'bg-primary-500 hover:bg-primary-600 dark:bg-darkMode-cta1-100 dark:hover:bg-darkMode-cta1-200'
+							'bg-primary-500 dark:bg-dark-green') ||
+						'bg-primary-500 dark:bg-dark-green'
 					}`}
 		>
 			{props.children}
