@@ -10,13 +10,14 @@ import { Section } from '../components/layout/Section';
 import { CagaljsNavbarItems } from '../components/navigation/CagaljsNavbarItems';
 import { Banner } from '../components/templates/Banner';
 import { Footer } from '../components/templates/Footer';
+import { Layout } from '../components/templates/Layout';
 import { Logo } from '../components/templates/Logo';
 import ThemeSwitch from '../components/templates/ThemeSwitch';
 import { VerticalFeatures } from '../components/templates/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 
 const Brands = (props: any) => (
-	<div className="antialiased text-gray-600">
+	<Layout>
 		<Meta
 			title={props.siteTitle ?? AppConfig.title}
 			description={props.siteDescription ?? AppConfig.description}
@@ -58,7 +59,7 @@ const Brands = (props: any) => (
 			}
 		/>
 		<Footer {...props.footer} />
-	</div>
+	</Layout>
 );
 
 export async function getStaticProps() {
