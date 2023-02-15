@@ -40,7 +40,7 @@ const Search = (props: ISearchProps) => (
 			</Section>
 		</Background>
 		<Section description="Search by category" className="py-6 px-3" margin="">
-			<div className="flex flex-row gap-14 max-md:gap-10 flex-nowrap justify-center overflow-auto whitespace-nowrap overflow-y-hidden pt-12">
+			<div className="custom_scrollbar flex flex-row gap-14 max-md:gap-10 flex-nowrap justify-center overflow-auto whitespace-nowrap overflow-y-hidden pt-12">
 				{props.categories?.map((item: any) => (
 					<Category {...item} key={item.key} />
 				))}

@@ -1,16 +1,21 @@
-import { useContext } from 'react';
+import { useState, useEffect } from 'react';
+
+import { useTheme } from 'next-themes';
 
 import { Moon } from '../icons/Moon';
 import { Sun } from '../icons/Sun';
-import ThemeContext from './ThemeContext';
 
 export default function ThemeSwitch() {
-	const themeCtx: { isDarkTheme?: boolean; toggleThemeHandler: () => void } =
-		useContext(ThemeContext);
+	const { systemTheme, theme, setTheme } = useTheme();
+	const [mounted, setMounted] = useState(false);
 
-	function toggleThemeHandler(): void {
-		themeCtx.toggleThemeHandler();
-	}
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) return null;
+
+	const currentTheme = theme === 'system' ? systemTheme : theme;
 
 	return (
 		<>
@@ -19,9 +24,11 @@ export default function ThemeSwitch() {
 				className="p-2 sm:p-2.5 rounded-full border text-base
                         bg-slate-600 text-slate-50 border-slate-800 hover:bg-slate-700
                          dark:border-slate-50 dark:text-zinc-800 dark:bg-slate-100"
-				onClick={toggleThemeHandler}
+				onClick={() =>
+					currentTheme === 'dark' ? setTheme('light') : setTheme('dark')
+				}
 			>
-				{themeCtx.isDarkTheme ? <Sun /> : <Moon />}
+				{currentTheme === 'dark' ? <Sun /> : <Moon />}
 			</button>
 		</>
 	);

@@ -1,12 +1,12 @@
+import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 
 import '../styles/global.css';
-import { ThemeContextProvider } from '../components/templates/ThemeContext';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-	<ThemeContextProvider>
+	<ThemeProvider enableSystem={true} attribute="class">
 		<Component {...pageProps} />
-	</ThemeContextProvider>
+	</ThemeProvider>
 );
 
 export default MyApp;
