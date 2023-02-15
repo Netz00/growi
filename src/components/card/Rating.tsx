@@ -29,7 +29,7 @@ const Rating = (props: IStarsProps) => {
 				</div>
 			))}
 
-			<span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-3">
+			<span className="bg-blue-100 dark:bg-blue-800/60 dark:text-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-3">
 				{props.rating}
 			</span>
 			<span className="text-xs font-semibold py-0.5 rounded ml-3">

@@ -9,7 +9,7 @@ const ProfileStats = (props: IProfileStatsProps) => {
 	const followersNumber = abbreviateNumber(props.follower);
 
 	return (
-		<div className="flex justify-evenly bg-brands-primary-200 p-2 rounded-lg">
+		<div className="flex justify-evenly bg-brands-primary-200 dark:bg-slate-600 p-2 rounded-lg">
 			<div className="text-center">
 				<p className="text-slate-50 text-2xl font-medium">
 					{followersNumber}

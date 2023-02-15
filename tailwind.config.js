@@ -76,6 +76,7 @@ module.exports = {
 			backgroundImage: () => ({
 				'gradient-instagram':
 					'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+				'gradient-green': 'linear-gradient(45deg, #20BF55 0%,#01BAEF 100%)',
 			}),
 		},
 	},

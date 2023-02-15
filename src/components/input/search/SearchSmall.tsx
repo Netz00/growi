@@ -34,8 +34,10 @@ const SearchSmall = (props: ISearchLargeProps) => {
 				</div>
 				<input
 					type="search"
-					className="block w-full p-2 pl-10 pr-4 md:pr-24  text-gray-900 
-                    border border-gray-300 rounded-lg bg-gray-50 focus:border-blue-500 focus:border-2 outline-none
+					className="block w-full p-2 pl-10 pr-4 md:pr-24 rounded-lg
+                    text-gray-900 bg-gray-50 dark:text-gray-500 dark:bg-gray-900
+                    border border-gray-300 dark:border-gray-800
+                    focus:outline outline-2 -outline-offset-2 focus:outline-blue-500 dark:focus:outline-blue-900
                     placeholder-slate-400 placeholder-shown:text-ellipsis"
 					placeholder="Search influencers by username, fist name, last name, tags"
 					required

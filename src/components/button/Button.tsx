@@ -28,7 +28,7 @@ const Button = (props: IButtonProps) => {
 						(props.style === ButtonStyle.CREATOR_SECONDARY &&
 							'bg-primary-500 dark:bg-dark-green') ||
 						(props.style === ButtonStyle.BRAND_PRIMARY &&
-							'bg-brands-primary-300 dark:bg-dark-green') ||
+							'bg-brands-primary-300 dark:bg-gradient-green') ||
 						(props.style === ButtonStyle.BRAND_SECONDARY &&
 							'bg-primary-500 dark:bg-dark-green') ||
 						'bg-primary-500 dark:bg-dark-green'

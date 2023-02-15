@@ -34,8 +34,10 @@ const SearchLarge = (props: ISearchLargeProps) => {
 				</div>
 				<input
 					type="search"
-					className="block w-full p-4 pl-10 pr-28 text-gray-900 
-                    border border-gray-300 rounded-lg bg-gray-50 focus:outline-blue-500
+					className="block w-full p-4 pl-10 pr-28 rounded-lg
+                    text-gray-900 bg-gray-50 dark:text-gray-500 dark:bg-gray-900
+                    border border-gray-300 dark:border-gray-800
+                    focus:outline outline-2 -outline-offset-4 focus:outline-blue-500 dark:focus:outline-blue-900
                     placeholder-slate-400 placeholder-shown:text-ellipsis"
 					placeholder="Search influencers by username, fist name, last name, tags"
 					required

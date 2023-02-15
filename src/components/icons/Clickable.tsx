@@ -10,7 +10,7 @@ type IClickableProps = {
 
 const Clickable = (props: IClickableProps) => (
 	<span
-		className={`text-black 
+		className={`text-black dark:text-gray-400
                                     focus:ring-4 focus:outline-none focus:ring-primary-300 
                                    ${
 										props.hover &&

@@ -44,7 +44,7 @@ const Dropdown = (props: IDropdownProps) => {
 				id="dropdownNavbar"
 				className={`z-10 ${
 					!isDropdownVisible && 'hidden'
-				} absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-36 dark:bg-gray-700 dark:divide-gray-600 dropdown_menu`}
+				} absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-36 dark:bg-gray-900 dark:divide-gray-600 dropdown_menu`}
 			>
 				<ul className="py-2 text-gray-700 dark:text-gray-400">
 					{props.items?.map((item, index) => (

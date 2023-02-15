@@ -43,7 +43,7 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 			<div
 				className={`${
 					isSavePopupVisible && 'brightness-50'
-				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col`}
+				} w-96 max-md:w-72 bg-white rounded-lg shadow-md flex flex-col dark:bg-gray-800`}
 			>
 				<div className="h-56 md:h-72">
 					<CardCarousel
@@ -54,7 +54,7 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 
 				<Link
 					href={`${router.basePath}/creators/${props.username}`}
-					className={`hover:bg-slate-100 ${
+					className={`hover:bg-slate-100 dark:hover:bg-slate-700 ${
 						isSavePopupVisible && 'pointer-events-none'
 					}`}
 				>
@@ -79,7 +79,7 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 									/>
 								</div>
 								<span>
-									<p className="text-slate-600 font-semibold">
+									<p className="text-slate-600 dark:text-slate-400 font-semibold">
 										@{props.username}{' '}
 									</p>
 									<p>
@@ -100,10 +100,10 @@ const InfluencerCard = (props: IInfluencerCardProps) => {
 					</div>
 				</Link>
 
-				<div className="px-5 py-1 border-solid border-t border-gray-400 flex items-center justify-between">
+				<div className="px-5 py-1 border-solid border-t border-gray-400 dark:border-gray-600 flex items-center justify-between">
 					<div className="text-left">
 						<p className="text-xs leading-3">Starting at</p>
-						<p className="text-2xl font-bold text-gray-900">
+						<p className="text-2xl font-bold text-gray-900 dark:text-gray-500">
 							{`${currencyFormatter(Math.round(props.startingPrice))}`}
 						</p>
 					</div>
