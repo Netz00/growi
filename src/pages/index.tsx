@@ -65,7 +65,9 @@ const Index = (props: any) => (
 			{...props.banner}
 			button={
 				<Link href={props.banner.button.link}>
-					<Button>{props.banner.button.text}</Button>
+					<Button style={ButtonStyle.SECONDARY}>
+						{props.banner.button.text}
+					</Button>
 				</Link>
 			}
 		/>

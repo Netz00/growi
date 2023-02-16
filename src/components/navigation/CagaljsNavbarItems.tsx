@@ -110,7 +110,7 @@ const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 					id="dropdown"
 					className={`w-fit ${
 						isDropdownVisible ? 'flex' : 'hidden'
-					} flex-col items-start gap-5 font-medium text-xl text-gray-800 dark:text-gray-400 dark:bg-gray-800 dark:outline-slate-600 pl-6 pr-10 py-3 absolute right-0
+					} flex-col items-start gap-5 font-medium text-xl text-gray-800 dark:text-gray-400 dark:bg-gray-800 dark:outline-slate-600 [&>li]:pl-6 [&>li]:pr-10 [&>li]:w-full py-3 absolute right-0
                     bg-gray-100 outline outline-1 outline-slate-200
                     dropdown_menu z-20
                     `}

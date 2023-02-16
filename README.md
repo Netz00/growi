@@ -1,15 +1,17 @@
 # Growi - frontend
 
-[![Next.js](https://img.shields.io/badge/Next.Js-13-blue?style=for-the-badge)](https://nextjs.org/) 
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.2-blue?style=for-the-badge)](https://tailwindcss.com/) 
-[![Fuse.js](https://img.shields.io/badge/Fuse.js-6.6.2-blue?style=for-the-badge)](https://fusejs.io/) 
-[![License MIT](https://img.shields.io/github/license/adrielcafe/hal.svg?style=for-the-badge&color=yellow)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.Js-13-blue?style=for-the-badge)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.2-blue?style=for-the-badge)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.2-yellow?style=for-the-badge)](https://tailwindcss.com/) 
+[![Fuse.js](https://img.shields.io/badge/Fuse.js-6.6.2-yellow?style=for-the-badge)](https://fusejs.io/)
+[![Chart.js](https://img.shields.io/badge/Chart.js-4.1-yellow?style=for-the-badge)](https://www.chartjs.org/)
+[![husky](https://img.shields.io/badge/husky-8.0-blueviolet?style=for-the-badge)](https://typicode.github.io/husky/#/)
 
-## Growi - Influencer marketing platform - frontend part
+## Influencer marketing platform - frontend part
 
 ---
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and spiced with configuration and boilerplate by [`creativedesignsguru`](https://creativedesignsguru.com).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and spiced with configuration and boilerplate from [`creativedesignsguru`](https://creativedesignsguru.com).
 
 ---
 

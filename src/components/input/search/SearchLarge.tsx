@@ -63,7 +63,7 @@ const SearchLarge = (props: ISearchLargeProps) => {
 				(props.autocomplete.filteredSuggestions.length ? (
 					<ul
 						className="absolute left-0 right-0 w-full z-10 bg-opacity-90 rounded-lg
-                    border-solid border border-slate-300 border-t-0 bg-white
+                    border-solid border border-slate-300 dark:border-slate-600 border-t-0 bg-white dark:bg-gray-800
                     list-none max-h-48 overflow-y-auto custom_scrollbar pl-0 cursor-pointer"
 						onMouseDown={(e) => e.preventDefault()}
 						id="suggestion-list"
@@ -76,16 +76,16 @@ const SearchLarge = (props: ISearchLargeProps) => {
 											props.autocomplete?.activeSuggestion &&
 										'border-2 border-blue-500'
 									}
-                                    p-1 px-4 hover:bg-slate-200 flex gap-2 items-center first:rounded-tl-lg last:rounded-bl-lg`}
+                                    p-1 px-4 hover:bg-slate-200 dark:hover:bg-gray-800 flex gap-2 items-center first:rounded-tl-lg last:rounded-bl-lg`}
 									key={suggestion.username}
 									onClick={props.onClick}
 									id={`suggestion-${index}`}
 									data-username={suggestion.username}
 								>
-									<span className="text-slate-600 font-semibold px-1 w-28">
+									<span className="text-slate-600 dark:text-gray-400 font-semibold px-1 w-28">
 										@{props.getMatchParts(suggestion.username)}
 									</span>
-									<span className="text-slate-600 font-semibold px-1">
+									<span className="text-slate-600 dark:text-gray-400 font-semibold px-1">
 										&nbsp;&#12539;&nbsp;
 									</span>
 									<span className="px-1 w-40">

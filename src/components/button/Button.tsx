@@ -5,6 +5,7 @@ enum ButtonStyle {
 	CREATOR_SECONDARY,
 	BRAND_PRIMARY,
 	BRAND_SECONDARY,
+	SECONDARY,
 }
 
 type IButtonProps = {
@@ -31,6 +32,8 @@ const Button = (props: IButtonProps) => {
 							'bg-brands-primary-300 dark:bg-gradient-green') ||
 						(props.style === ButtonStyle.BRAND_SECONDARY &&
 							'bg-primary-500 dark:bg-dark-green') ||
+						(props.style === ButtonStyle.SECONDARY &&
+							'bg-primary-500 dark:bg-transparent dark:outline dark:outline-dark-green dark:text-dark-green') ||
 						'bg-primary-500 dark:bg-dark-green'
 					}`}
 		>

@@ -188,7 +188,7 @@ const AutocompleteImpl = (props: IAutocompleteProps) => {
 		}
 		// User pressed the down arrow
 		else if (e.keyCode === 40) {
-			if (activeSuggestion - 1 === filteredSuggestions.length) {
+			if (activeSuggestion + 1 === filteredSuggestions.length) {
 				return;
 			}
 
