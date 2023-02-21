@@ -33,7 +33,7 @@ const Search = (props: ISearchProps) => (
 				/>
 			</Section>
 
-			<Section className="pt-20 pb-32 px-3">
+			<Section className="pt-20 pb-32 md:px-6 px-2">
 				<AutocompleteImpl>
 					<SearchLarge />
 				</AutocompleteImpl>
