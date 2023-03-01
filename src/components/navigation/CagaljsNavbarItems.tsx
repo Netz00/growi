@@ -6,11 +6,18 @@ import useComponentVisible from '../../hooks/useComponentVisible';
 import useWindowSize from '../../hooks/useWindowSize';
 import { getFirstWrapItemIndex } from '../../utils/wrapItems';
 
-type ICagaljsNavbarItemsProps = {
+interface INavBarItem {
+	key: number;
+	text: string;
+	link: string;
+	active?: boolean;
+}
+
+interface ICagaljsNavbarItemsProps {
 	logo: ReactNode;
 	search?: ReactNode;
-	navBarLinks: JSON[];
-};
+	navBarLinks: INavBarItem[];
+}
 
 const CagaljsNavbarItems = (props: ICagaljsNavbarItemsProps) => {
 	const {
