@@ -3,7 +3,6 @@
 [![Next.js](https://img.shields.io/badge/Next.Js-13-blue?style=for-the-badge)](https://nextjs.org/) 
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.2-blue?style=for-the-badge)](https://tailwindcss.com/) 
 [![Fuse.js](https://img.shields.io/badge/Fuse.js-6.6.2-blue?style=for-the-badge)](https://fusejs.io/) 
-[![License MIT](https://img.shields.io/github/license/adrielcafe/hal.svg?style=for-the-badge&color=yellow)](https://opensource.org/licenses/MIT)
 
 ## Growi - Influencer marketing platform - frontend part
 
