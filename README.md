@@ -7,6 +7,8 @@
 ## Influencer marketing platform
 ⚠️ The repository was developed in the context of the *Human Computer Interaction* course during the winter semester of 2022/2023. The information presented on the website is predominantly generated and lacks substantive significance, and thus should not be considered a reliable source of information.
 
+Documentation can be found [here](https://netz00.notion.site/Growi-491981adfaec4864b3fb0ee0004f1c5b).
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and spiced with configuration and boilerplate by [`creativedesignsguru`](https://creativedesignsguru.com).
